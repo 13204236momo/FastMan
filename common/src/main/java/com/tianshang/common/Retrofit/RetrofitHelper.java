@@ -1,5 +1,9 @@
 package com.tianshang.common.Retrofit;
 
+import com.tianshang.common.BuildConfig;
+import com.tianshang.common.Retrofit.interceptor.BaseParamsInterceptor;
+import com.tianshang.common.Retrofit.interceptor.BaseUrlInterceptor;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -16,15 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     public static Retrofit instance;
-    private static final String BASE_URL = "https://api.yonyoucloud.com/";
-    private static final String BASE_URL_USER = "https://www.111.com/";
-    private static final String BASE_URL_PAY = "https://www.222.com/";
-
-    /**
-     * 根据header里的url_name来判断是否要修改base_url
-     */
-    private static final String URL_TAG = "url_name";
-
+    private static final String BASE_URL_RELEASE = "https://api.yonyoucloud.com/";
+    private static final String BASE_URL_DEBUG = "https://api.yonyoucloud.com/";
     /**
      * 超时时间
      */
@@ -42,7 +39,7 @@ public class RetrofitHelper {
 
     private static Retrofit getRetrofit() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(getBaseUrl())
                 .client(getMyClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -51,53 +48,26 @@ public class RetrofitHelper {
         return retrofit;
     }
 
+    /**
+     * 根据debug或release来设置baseUrl
+     * @return
+     */
+    private static String getBaseUrl(){
+        String baseUrl;
+        if (BuildConfig.DEBUG){
+            baseUrl = BASE_URL_DEBUG;
+        }else {
+            baseUrl = BASE_URL_RELEASE;
+        }
+        return baseUrl;
+    }
+
     private static OkHttpClient getMyClient(){
         OkHttpClient okHttpClient = new OkHttpClient
                 .Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
-                //添加应用拦截器
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        //获取request
-                        Request request = chain.request();
-                        //获取request的创建者builder
-                        Request.Builder builder = request.newBuilder();
-                        //从request中获取headers，通过给定的键url_name
-                        List<String> headerValues = request.headers(URL_TAG);
-                        if (headerValues != null && headerValues.size() > 0) {
-                            //如果有这个header，先将配置的header删除，因此header仅用作app和okhttp之间使用
-                            builder.removeHeader(URL_TAG);
-
-                            //匹配获得新的BaseUrl
-                            String headerValue = headerValues.get(0);
-                            //从request中获取原有的HttpUrl实例oldHttpUrl
-                            HttpUrl oldHttpUrl = request.url();
-                            HttpUrl newBaseUrl = null;
-                            //可拓展
-                            if ("user".equals(headerValue)) {
-                                newBaseUrl = HttpUrl.parse(BASE_URL_USER);
-                            } else if ("pay".equals(headerValue)) {
-                                newBaseUrl = HttpUrl.parse(BASE_URL_PAY);
-                            } else {
-                                newBaseUrl = oldHttpUrl;
-                            }
-                            //重建新的HttpUrl，修改需要修改的url部分
-                            HttpUrl newFullUrl = oldHttpUrl
-                                    .newBuilder()
-                                    .scheme(newBaseUrl.scheme())
-                                    .host(newBaseUrl.host())
-                                    .port(newBaseUrl.port())
-                                    .build();
-
-                            //重建这个request，通过builder.url(newFullUrl).build()；
-                            //然后返回一个response至此结束修改
-                            return chain.proceed(builder.url(newFullUrl).build());
-                        } else {
-                            return chain.proceed(request);
-                        }
-                    }
-                })
+                .addInterceptor(new BaseUrlInterceptor())
+                .addInterceptor(new BaseParamsInterceptor())
                 .build();
         return okHttpClient;
     }

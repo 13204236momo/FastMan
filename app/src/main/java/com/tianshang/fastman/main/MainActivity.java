@@ -9,11 +9,12 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.tianshang.common.Retrofit.result.CommonListResult;
 import com.tianshang.common.Retrofit.RetrofitRequest;
 import com.tianshang.common.Retrofit.RetrofitHelper;
 import com.tianshang.common.base.BaseActivity;
 import com.tianshang.fastman.R;
-import com.tianshang.common.entity.app.Result;
+import com.tianshang.common.entity.app.School;
 import com.tianshang.fastman.mine.LoginActivity;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
     TextView tvTab3;
 
 
-    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
+    private List<Fragment> mFragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +58,9 @@ public class MainActivity extends BaseActivity {
 
         vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mFragmentList));
 
-        tvTab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+        tvTab3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
 
-        tvTab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                http();
-            }
-        });
+        tvTab2.setOnClickListener(v -> http());
     }
 
     private void http() {
@@ -78,13 +69,14 @@ public class MainActivity extends BaseActivity {
                 .getCall()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Result>() {
+                .subscribe(new Observer<CommonListResult<School>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onNext(Result result) {
+                    public void onNext(CommonListResult<School> result) {
                         Log.v("zyl","result:"+ result.getMsg());
                     }
 
@@ -99,7 +91,6 @@ public class MainActivity extends BaseActivity {
 
                     }
                 });
-
     }
 
 

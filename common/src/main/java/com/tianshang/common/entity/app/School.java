@@ -1,48 +1,7 @@
 package com.tianshang.common.entity.app;
 
-import com.tianshang.common.Retrofit.BaseResult;
+public class School {
 
-import java.util.List;
-
-
-public class Result extends BaseResult {
-
-
-    /**
-     * status : 0
-     * msg : ok
-     * result : [{"name":"中国传媒大学","academy_type":"语言","school_type":"大学","address":"北京","rank":" 本科/高职(专科) ","phone":" 010-65779370;010-65779256;010-65779141 ","contact_address":" 北京朝阳区定福庄东街一号 ","ascription":"教育部","site":""}]
-     */
-
-    private String status;
-    private String msg;
-    private List<ResultBean> result;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public List<ResultBean> getResult() {
-        return result;
-    }
-
-    public void setResult(List<ResultBean> result) {
-        this.result = result;
-    }
-
-    public static class ResultBean {
         /**
          * name : 中国传媒大学
          * academy_type : 语言
@@ -136,5 +95,4 @@ public class Result extends BaseResult {
         public void setSite(String site) {
             this.site = site;
         }
-    }
 }
