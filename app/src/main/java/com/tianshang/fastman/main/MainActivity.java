@@ -9,8 +9,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.tianshang.common.Retrofit.BaseResult;
-import com.tianshang.common.Retrofit.NetRequest;
+import com.tianshang.common.Retrofit.RetrofitRequest;
 import com.tianshang.common.Retrofit.RetrofitHelper;
 import com.tianshang.common.base.BaseActivity;
 import com.tianshang.fastman.R;
@@ -75,7 +74,7 @@ public class MainActivity extends BaseActivity {
 
     private void http() {
        RetrofitHelper.getInstance()
-                .create(NetRequest.class)
+                .create(RetrofitRequest.class)
                 .getCall()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
