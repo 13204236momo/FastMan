@@ -18,10 +18,11 @@
     <TextView
         android:id="@+id/tab1"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="#f67"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:text="Tab1"
+        android:drawableTop="@drawable/task"
+        android:text="任务"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tab2" />
@@ -29,10 +30,11 @@
     <TextView
         android:id="@+id/tab2"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="#A67"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:text="Tab2"
+        android:drawableTop="@drawable/post"
+        android:text="发布"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tab1"
         app:layout_constraintRight_toLeftOf="@+id/tab3" />
@@ -41,10 +43,11 @@
     <TextView
         android:id="@+id/tab3"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="#767"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:text="Tab3"
+        android:text="我的"
+        android:textColor="@android:color/black"
+        android:drawableTop="@drawable/mine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tab2"
         app:layout_constraintRight_toRightOf="parent" />

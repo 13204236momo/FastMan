@@ -6,10 +6,13 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tianshang.common.R;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class BaseActivity extends AppCompatActivity {
     protected View contentView;
     private LinearLayout llContent;
+    private LinearLayout llTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class BaseActivity extends AppCompatActivity {
 
 
     private void initLayout() {
+        llTitle = findViewById(R.id.ll_title);
         llContent = findViewById(R.id.ll_content1);
     }
 
@@ -38,6 +42,14 @@ public class BaseActivity extends AppCompatActivity {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT);
             llContent.addView(contentView, params);
+        }
+    }
+
+    public void setTitleBarVisible(boolean isShow){
+        if (isShow){
+            llTitle.setVisibility(View.VISIBLE);
+        }else {
+            llTitle.setVisibility(View.GONE);
         }
     }
 }

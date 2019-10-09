@@ -1,9 +1,7 @@
 package com.tianshang.common.Retrofit.interceptor;
 
 import android.util.Log;
-
 import java.io.IOException;
-
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -12,6 +10,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okio.Buffer;
 
+/**
+ * 添加公共参数的拦截器
+ */
 public class BaseParamsInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
