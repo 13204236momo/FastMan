@@ -1,6 +1,4 @@
-package com.tianshang.common.Retrofit.result;
-
-import com.tianshang.common.Retrofit.result.BaseResult;
+package com.tianshang.common.retrofit.result;
 
 public class CommonResult<T> extends BaseResult {
     private T data;

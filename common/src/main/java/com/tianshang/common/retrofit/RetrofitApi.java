@@ -1,4 +1,4 @@
-package com.tianshang.common.Retrofit;
+package com.tianshang.common.retrofit;
 
 public class RetrofitApi {
 

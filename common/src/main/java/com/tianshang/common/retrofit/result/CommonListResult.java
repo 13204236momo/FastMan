@@ -1,4 +1,4 @@
-package com.tianshang.common.Retrofit.result;
+package com.tianshang.common.retrofit.result;
 
 import java.util.ArrayList;
 

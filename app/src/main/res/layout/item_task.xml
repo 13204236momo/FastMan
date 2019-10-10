@@ -17,8 +17,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:background="@color/brown" />
+            android:layout_marginLeft="15dp"/>
 
         <TextView
             android:id="@+id/tv_content"

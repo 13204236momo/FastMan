@@ -1,4 +1,4 @@
-package com.tianshang.common.Retrofit.interceptor;
+package com.tianshang.common.retrofit.interceptor;
 
 import android.util.Log;
 import java.io.IOException;

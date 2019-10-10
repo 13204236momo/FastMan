@@ -1,4 +1,4 @@
-package com.tianshang.common.Retrofit.interceptor;
+package com.tianshang.common.retrofit.interceptor;
 
 import java.io.IOException;
 import java.util.List;

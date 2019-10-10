@@ -6,4 +6,5 @@
     
     <color name="brown">#975C3C</color>
     <color name="black">#000000</color>
+    <color name="line">#dddddd</color>
 </resources>

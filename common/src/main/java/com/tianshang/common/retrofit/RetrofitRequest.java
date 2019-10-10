@@ -1,6 +1,6 @@
-package com.tianshang.common.Retrofit;
+package com.tianshang.common.retrofit;
 
-import com.tianshang.common.Retrofit.result.CommonListResult;
+import com.tianshang.common.retrofit.result.CommonListResult;
 import com.tianshang.common.entity.app.School;
 
 import io.reactivex.Observable;

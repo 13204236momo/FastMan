@@ -1,25 +1,21 @@
 package com.tianshang.fastman.main;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import com.tianshang.common.Retrofit.result.CommonListResult;
-import com.tianshang.common.Retrofit.RetrofitRequest;
-import com.tianshang.common.Retrofit.RetrofitHelper;
+import com.tianshang.common.retrofit.RetrofitHelper;
+import com.tianshang.common.retrofit.RetrofitRequest;
+import com.tianshang.common.retrofit.result.CommonListResult;
 import com.tianshang.common.base.BaseActivity;
+import com.tianshang.common.entity.app.School;
 import com.tianshang.common.widget.NoScrollViewPager;
 import com.tianshang.fastman.R;
-import com.tianshang.common.entity.app.School;
-import com.tianshang.fastman.mine.LoginActivity;
+import com.tianshang.fastman.task.AddRecordDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +58,8 @@ public class MainActivity extends BaseActivity {
 
         vpMain.setScrollable(false);
         vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mFragmentList));
-
+        tvTab1.setTextColor(getResources().getColor(R.color.brown));
+        tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
 //        tvTab3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
 //
 //        tvTab2.setOnClickListener(v -> http());
@@ -89,7 +86,7 @@ public class MainActivity extends BaseActivity {
                 tvTab3.setTextColor(getResources().getColor(R.color.black));
                 tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
 
-                vpMain.setCurrentItem(1);
+                addRecord();
                 break;
             case R.id.tab3:
                 tvTab1.setTextColor(getResources().getColor(R.color.black));
@@ -102,6 +99,12 @@ public class MainActivity extends BaseActivity {
                 vpMain.setCurrentItem(2);
                 break;
         }
+    }
+
+    private void addRecord() {
+        Dialog dialog = new AddRecordDialog(this);
+        dialog.show();
+        Log.d("zhou",System.currentTimeMillis()+"");
     }
 
 

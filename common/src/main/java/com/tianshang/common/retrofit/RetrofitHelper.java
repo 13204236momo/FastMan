@@ -1,8 +1,8 @@
-package com.tianshang.common.Retrofit;
+package com.tianshang.common.retrofit;
 
 import com.tianshang.common.BuildConfig;
-import com.tianshang.common.Retrofit.interceptor.BaseParamsInterceptor;
-import com.tianshang.common.Retrofit.interceptor.BaseUrlInterceptor;
+import com.tianshang.common.retrofit.interceptor.BaseParamsInterceptor;
+import com.tianshang.common.retrofit.interceptor.BaseUrlInterceptor;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

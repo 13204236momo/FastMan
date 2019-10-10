@@ -40,7 +40,7 @@ ext{
             //第三方
             "smartRefreshLayout":'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0',
             "butterknife" : 'com.jakewharton:butterknife:10.2.0',
-            "glide": 'com.github.bumptech.glide:glide:4.5.0',
+            "glide": 'com.github.bumptech.glide:glide:4.6.1',
             "adapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47',
 
 
