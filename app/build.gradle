@@ -132,7 +132,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     support.each { k, v -> implementation v }
     processor.each { k, v ->
-        annotationProcessor v }
+        annotationProcessor v
+    }
 
     api project(':common')
     implementation project(':annotation')
@@ -142,4 +143,5 @@ dependencies {
     if (isRelease) {
 //        implementation project(':order')
 //        implementation project(':personal')
-    }}
+    }
+}

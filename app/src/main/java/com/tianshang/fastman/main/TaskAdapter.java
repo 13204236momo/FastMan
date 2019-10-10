@@ -1,58 +1,28 @@
 package com.tianshang.fastman.main;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.tianshang.common.entity.app.TaskListEntity;
 import com.tianshang.fastman.R;
-
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
-
-    private Context context;
-    private List<String> list;
-
-    public TaskAdapter(Context context, List<String> list) {
-        this.context = context;
-        this.list = list;
-    }
-
-    @NonNull
-    @Override
-    public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_task, parent, false);
-        TaskHolder holder = new TaskHolder(view);
-        return holder;
+public class TaskAdapter extends BaseQuickAdapter<TaskListEntity,BaseViewHolder> {
+    public TaskAdapter(int id, List<TaskListEntity> data) {
+        super(id, data);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-        holder.tvTitle.setText(list.get(position));
-    }
+    protected void convert(@NonNull BaseViewHolder helper, TaskListEntity item) {
+        helper.setText(R.id.tv_content,item.getContent());
+        Glide.with(mContext).load(item.getProfile()).into((ImageView) helper.getView(R.id.iv_profile));
 
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    class TaskHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.tv_title)
-        TextView tvTitle;
-
-        public TaskHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this,itemView);
-        }
     }
 }
+
+

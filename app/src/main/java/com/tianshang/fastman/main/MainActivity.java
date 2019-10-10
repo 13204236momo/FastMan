@@ -16,6 +16,7 @@ import com.tianshang.common.Retrofit.result.CommonListResult;
 import com.tianshang.common.Retrofit.RetrofitRequest;
 import com.tianshang.common.Retrofit.RetrofitHelper;
 import com.tianshang.common.base.BaseActivity;
+import com.tianshang.common.widget.NoScrollViewPager;
 import com.tianshang.fastman.R;
 import com.tianshang.common.entity.app.School;
 import com.tianshang.fastman.mine.LoginActivity;
@@ -34,7 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.vp_main)
-    ViewPager vpMain;
+    NoScrollViewPager vpMain;
     @BindView(R.id.tab1)
     TextView tvTab1;
     @BindView(R.id.tab2)
@@ -59,6 +60,7 @@ public class MainActivity extends BaseActivity {
         mFragmentList.add(new TaskFragment());
         mFragmentList.add(new MineFragment());
 
+        vpMain.setScrollable(false);
         vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mFragmentList));
 
 //        tvTab3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
