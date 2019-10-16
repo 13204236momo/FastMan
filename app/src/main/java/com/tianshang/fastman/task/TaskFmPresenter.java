@@ -8,10 +8,11 @@ import com.tianshang.common.base.mvp.BaseEntity;
 import com.tianshang.common.base.mvp.BasePresenterFm;
 import com.tianshang.fastman.main.TaskFragment;
 
-public class TaskFmPresenter extends BasePresenterFm<TaskFragment, TaskFmModel, TaskFmContract.Presenter> {
+public class TaskFmPresenter extends BasePresenterFm<TaskFragment, TaskFmContract.Presenter> {
 
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
+
     @Override
     public TaskFmContract.Presenter getContract() {
         return new TaskFmContract.Presenter() {
@@ -21,19 +22,10 @@ public class TaskFmPresenter extends BasePresenterFm<TaskFragment, TaskFmModel, 
                 initLocation();
             }
 
-            @Override
-            public void responseResult(BaseEntity baseEntity) {
-
-            }
         };
     }
 
-    @Override
-    public TaskFmModel getModel() {
-        return null;
-    }
-
-    private void initLocation(){
+    private void initLocation() {
         //初始化client
         locationClient = new AMapLocationClient(getView().getContext());
         locationOption = getDefaultOption();
@@ -45,11 +37,11 @@ public class TaskFmPresenter extends BasePresenterFm<TaskFragment, TaskFmModel, 
 
     /**
      * 默认的定位参数
-     * @since 2.8.0
-     * @author hongming.wang
      *
+     * @author hongming.wang
+     * @since 2.8.0
      */
-    private AMapLocationClientOption getDefaultOption(){
+    private AMapLocationClientOption getDefaultOption() {
         AMapLocationClientOption mOption = new AMapLocationClientOption();
         mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
         mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
@@ -117,9 +109,9 @@ public class TaskFmPresenter extends BasePresenterFm<TaskFragment, TaskFmModel, 
 //                //解析定位结果，
 //                String result = sb.toString();
 //                tvResult.setText(result);
-                if (location.getErrorCode() == 0){
-
-                }else {
+                if (location.getErrorCode() == 0) {
+                    getView().getContract().resultAddress(location.getCity());
+                } else {
 
                 }
             } else {

@@ -9,16 +9,14 @@ public interface TaskFmContract {
         void getAddress() throws Exception;
     }
 
-    interface View<T extends BaseEntity> {
+    interface View {
         // 真实的项目中，请求结果往往是以javabean--------------4
-        void handlerResult(T t);
+        void resultAddress(String address);
     }
 
     interface Presenter<T extends BaseEntity> {
         // 登录请求（接收到View层指令，可以自己做，也可以让Model层去执行）-----------1
         void requestAddress();
 
-        // 结果响应（接收到Model层处理的结果，通知View层刷新）---------------3
-        void responseResult(T t);
     }
 }
