@@ -8,10 +8,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tianshang.common.base.BaseFragment;
-import com.tianshang.common.base.mvp.BasePresenterFm;
 import com.tianshang.common.base.mvp.BaseViewFm;
 import com.tianshang.common.entity.app.TaskListEntity;
+import com.tianshang.common.utils.Helper;
 import com.tianshang.common.widget.SwipeItemLayout;
 import com.tianshang.fastman.R;
 import com.tianshang.fastman.task.TaskFmContract;
@@ -33,6 +32,7 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
     private TextView tvAddress;
 
     TaskAdapter taskAdapter;
+    private List<TaskListEntity> list = new ArrayList<>();
 
     @Override
     protected int getLayoutResID() {
@@ -45,26 +45,6 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
 
         p.getContract().requestAddress();
 
-        List<TaskListEntity> list = new ArrayList<>();
-
-        list.add(new TaskListEntity("到8栋天天快递取件",R.mipmap.img1));
-        list.add(new TaskListEntity("到23栋中通快递取件",R.mipmap.img2));
-        list.add(new TaskListEntity("到19栋申通快递取件",R.mipmap.img3));
-        list.add(new TaskListEntity("到5栋EMS快递取件",R.mipmap.img4));
-        list.add(new TaskListEntity("到12栋圆通快递取件",R.mipmap.img5));
-        list.add(new TaskListEntity("到三食堂买大份黄焖鸡",R.mipmap.img6));
-        list.add(new TaskListEntity("到8栋天天快递取件",R.mipmap.img1));
-        list.add(new TaskListEntity("到23栋中通快递取件",R.mipmap.img2));
-        list.add(new TaskListEntity("到19栋申通快递取件",R.mipmap.img3));
-        list.add(new TaskListEntity("到5栋EMS快递取件",R.mipmap.img4));
-        list.add(new TaskListEntity("到12栋圆通快递取件",R.mipmap.img5));
-        list.add(new TaskListEntity("到三食堂买大份黄焖鸡",R.mipmap.img6));
-        list.add(new TaskListEntity("到8栋天天快递取件",R.mipmap.img1));
-        list.add(new TaskListEntity("到23栋中通快递取件",R.mipmap.img2));
-        list.add(new TaskListEntity("到19栋申通快递取件",R.mipmap.img3));
-        list.add(new TaskListEntity("到5栋EMS快递取件",R.mipmap.img4));
-        list.add(new TaskListEntity("到12栋圆通快递取件",R.mipmap.img5));
-        list.add(new TaskListEntity("到三食堂买大份黄焖鸡",R.mipmap.img6));
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
@@ -73,8 +53,6 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
         taskAdapter = new TaskAdapter(R.layout.item_task, list);
         taskAdapter.addHeaderView(getHeader());
         rvTask.setAdapter(taskAdapter);
-
-
     }
 
     private View getHeader() {
@@ -87,11 +65,34 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
 
     @Override
     public TaskFmContract.View getContract() {
-        return null;
+        return new TaskFmContract.View() {
+            @Override
+            public void resultAddress(String address) {
+                if (address != null) {
+                    Helper.showToast(address);
+                    p.getContract().getTaskList(list);
+                } else {
+                    Helper.showToast("定位失败！");
+                    p.getContract().getTaskList(list);
+                }
+
+            }
+
+            @Override
+            public void setTaskList(List<TaskListEntity> list) {
+                taskAdapter.setNewData(list);
+            }
+        };
     }
 
     @Override
     public TaskFmPresenter getPresenter() {
         return new TaskFmPresenter();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        p.getContract().destroyLocation();
     }
 }
