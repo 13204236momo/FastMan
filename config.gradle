@@ -42,6 +42,8 @@ ext{
             "butterknife" : 'com.jakewharton:butterknife:10.2.0',
             "glide": 'com.github.bumptech.glide:glide:4.6.1',
             "adapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47',
+            //高德地图定位
+            "amap": 'com.amap.api:location:latest.integration',
 
 
             //网络请求相关

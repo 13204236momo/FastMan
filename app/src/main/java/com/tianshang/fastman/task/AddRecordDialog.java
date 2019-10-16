@@ -58,7 +58,7 @@ public class AddRecordDialog extends Dialog {
         setContentView(view);
         ButterKnife.bind(this, view);
         getWindow().setBackgroundDrawable(new ColorDrawable(0xdeffffff));
-        getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         initView();
     }
 

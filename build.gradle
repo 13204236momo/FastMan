@@ -1,6 +1,10 @@
 //加入自定义config.config
 apply from: "config.gradle"
 
+ext {
+    var = 'release.keystore'
+}
+
 buildscript {
     repositories {
         //阿里镜像

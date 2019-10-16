@@ -9,9 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tianshang.common.base.BaseFragment;
+import com.tianshang.common.base.mvp.BasePresenterFm;
+import com.tianshang.common.base.mvp.BaseViewFm;
 import com.tianshang.common.entity.app.TaskListEntity;
 import com.tianshang.common.widget.SwipeItemLayout;
 import com.tianshang.fastman.R;
+import com.tianshang.fastman.task.TaskFmContract;
+import com.tianshang.fastman.task.TaskFmPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class TaskFragment extends BaseFragment {
+public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.View> {
 
     @BindView(R.id.rv_task)
     RecyclerView rvTask;
@@ -38,6 +42,8 @@ public class TaskFragment extends BaseFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
+
+        p.getContract().requestAddress();
 
         List<TaskListEntity> list = new ArrayList<>();
 
@@ -76,5 +82,16 @@ public class TaskFragment extends BaseFragment {
         tvTaskNum = header.findViewById(R.id.tv_task_num);
         tvAddress = header.findViewById(R.id.tv_address);
         return header;
+    }
+
+
+    @Override
+    public TaskFmContract.View getContract() {
+        return null;
+    }
+
+    @Override
+    public TaskFmPresenter getPresenter() {
+        return new TaskFmPresenter();
     }
 }
