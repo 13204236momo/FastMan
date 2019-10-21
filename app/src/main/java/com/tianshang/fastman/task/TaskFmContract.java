@@ -15,7 +15,7 @@ public interface TaskFmContract {
 
         void requestAddress();
         void destroyLocation();
-        void getTaskList(List<TaskListEntity> list);
+        void getTaskList();
 
     }
 }

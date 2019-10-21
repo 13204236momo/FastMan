@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
     private void initView() {
         setTitleBarVisible(false);
         mFragmentList.add(new TaskFragment());
-        mFragmentList.add(new TaskFragment());
+        //mFragmentList.add(new TaskFragment());
         mFragmentList.add(new MineFragment());
 
         vpMain.setScrollable(false);
@@ -96,7 +96,7 @@ public class MainActivity extends BaseActivity {
                 tvTab3.setTextColor(getResources().getColor(R.color.brown));
                 tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
 
-                vpMain.setCurrentItem(2);
+                vpMain.setCurrentItem(1);
                 break;
         }
     }
