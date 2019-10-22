@@ -60,7 +60,7 @@ public class ARouterProcessor extends AbstractProcessor {
     private Messager messager;
     //文件生成器 类/资源，Filter用来创建新的源文件，class文件以及辅助文件
     private Filer filer;
-    //字谜快名，如：app/order/personal,需要拼接类名时用到（必传）ARouter￥￥Group￥￥order
+    //字谜快名，如：app/order/personal,需要拼接类名时用到（必传）ARouter$$Group$$order
     private String moduleName;
     //包名用于存放APT生成的类文件
     private String packageNameForAPT;
