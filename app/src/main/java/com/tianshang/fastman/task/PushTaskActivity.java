@@ -30,12 +30,12 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
     TextView tvPackWeight;
     @BindView(R.id.tv_pack_volume)
     TextView tvPackVolume;
-   @BindView(R.id.tv_money)
-   TextView tvMoney;
-   @BindView(R.id.tv_toast)
-   TextView tvToast;
-   @BindView(R.id.tv_to_pay)
-   TextView tvToPay;
+    @BindView(R.id.tv_money)
+    TextView tvMoney;
+    @BindView(R.id.tv_toast)
+    TextView tvToast;
+    @BindView(R.id.tv_to_pay)
+    TextView tvToPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,33 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.iv_back,R.id.tv_address,R.id.tv_last_time,R.id.tv_pay_way,R.id.tv_task_content,R.id.tv_pack_no,
-            R.id.tv_pack_weight,R.id.tv_pack_volume,R.id.tv_money,R.id.tv_toast,R.id.tv_to_pay})
+    @OnClick({R.id.iv_back, R.id.tv_address, R.id.tv_last_time, R.id.tv_pay_way,
+            R.id.tv_task_content, R.id.tv_pack_no, R.id.tv_pack_weight,
+            R.id.tv_pack_volume, R.id.tv_money, R.id.tv_toast, R.id.tv_to_pay})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.tv_address:
+                break;
+            case R.id.tv_last_time:
+                break;
+            case R.id.tv_pay_way:
+                break;
+            case R.id.tv_task_content:
+                break;
+            case R.id.tv_pack_no:
+                break;
+            case R.id.tv_pack_weight:
+                break;
+            case R.id.tv_pack_volume:
+                break;
+            case R.id.tv_money:
+                break;
+            case R.id.tv_toast:
+                break;
+            case R.id.tv_to_pay:
                 break;
 
         }
