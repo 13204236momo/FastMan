@@ -2,7 +2,7 @@ package com.tianshang.fastman.mine;
 
 import com.tianshang.common.base.mvp.BasePresenter;
 
-public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel, LoginContract.Presenter> {
+public class LoginPresenter extends BasePresenter<LoginActivity, LoginContract.Presenter> {
 
 
     @Override
@@ -11,7 +11,6 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel, Log
             @Override
             public void requestLogin(String name, String pwd) {
                 try {
-                    m.getContract().executeLogin(name, pwd);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -24,8 +23,4 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel, Log
         };
     }
 
-    @Override
-    public LoginModel getModel() {
-        return new LoginModel(this);
-    }
 }

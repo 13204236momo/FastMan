@@ -3,21 +3,18 @@ package com.tianshang.common.base.mvp;
 import java.lang.ref.WeakReference;
 
 //Presenter基类
-public abstract class BasePresenter<V extends BaseView, M extends BaseModel, CONTRACT> {
+public abstract class BasePresenter<V extends BaseView, CONTRACT> {
 
-    protected M m;
     //绑定view层弱引用
     private WeakReference<V> vWeakReference;
 
 
     public BasePresenter() {
-        m = getModel();
     }
 
     //获取子类具体契约（model和view层协商的共同业务）
     public abstract CONTRACT getContract();
 
-    public abstract M getModel();
 
     public void bindView(V v) {
         vWeakReference = new WeakReference<>(v);
