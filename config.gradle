@@ -46,6 +46,8 @@ ext{
             //高德地图定位
             "amap": 'com.amap.api:location:latest.integration',
 
+            "androidtagview":'co.lujun:androidtagview:1.1.7',
+
 
             //网络请求相关
             "retrofit2":'com.squareup.retrofit2:retrofit:2.6.2',

@@ -22,13 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".task.PushTaskActivity"></activity>
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="59d5dd76a5f10b63c129c110754aa85f" />
 
-        <activity android:name=".mine.LoginActivity" />
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".task.PushTaskActivity" />
+        <activity android:name=".mine.LoginActivity" />
+        <activity android:name=".task.EditMessageActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
     </application>
