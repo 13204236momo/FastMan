@@ -3,6 +3,8 @@ package com.tianshang.common.base;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tianshang.common.R;
@@ -13,6 +15,8 @@ public class BaseActivity extends AppCompatActivity {
     protected View contentView;
     private LinearLayout llContent;
     private LinearLayout llTitle;
+    public TextView tvBaseTitle;
+    public TextView tvBaseRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

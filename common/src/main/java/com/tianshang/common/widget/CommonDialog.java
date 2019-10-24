@@ -78,6 +78,7 @@ public class CommonDialog extends Dialog {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             final CommonDialog dialog = getDialog(context);
+            dialog.setCanceledOnTouchOutside(false);
             View view = inflater.inflate(R.layout.dialog_common, null);
 
             tvTitle = view.findViewById(R.id.tv_title);

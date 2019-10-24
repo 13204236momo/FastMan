@@ -79,6 +79,7 @@ public class AddRecordDialog extends Dialog {
                 dismiss();
             case R.id.iv_word:
                 context.startActivity(new Intent(context,PushTaskActivity.class));
+                dismiss();
                 break;
         }
     }

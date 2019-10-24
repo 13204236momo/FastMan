@@ -14,43 +14,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/gradient_bg"/>
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/to_left" />
-
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="任务配送至"
-            android:textColor="@android:color/white"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/tv_address_title_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_text"
-            android:layout_centerHorizontal="true"
-            android:text="南昌航空大学23栋301"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"/>
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -123,7 +86,7 @@
                     android:layout_below="@id/tv_last_time"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@color/gray_light" />
+                    android:background="@color/gray_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -183,7 +146,7 @@
                     android:layout_below="@id/tv_task_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@color/gray_light" />
+                    android:background="@color/gray_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -208,7 +171,7 @@
                     android:layout_below="@id/tv_pack_no"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@color/gray_light" />
+                    android:background="@color/gray_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,7 +196,7 @@
                     android:layout_below="@id/tv_pack_weight"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@color/gray_light" />
+                    android:background="@color/gray_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -253,7 +216,41 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/ib_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/to_left"/>
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="任务配送至"
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_address_title_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_text"
+            android:layout_centerHorizontal="true"
+            android:text="南昌航空大学23栋301"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -278,7 +275,7 @@
             android:layout_width="1dp"
             android:layout_height="20dp"
             android:layout_marginLeft="4dp"
-            android:background="@color/gray_light" />
+            android:background="@color/gray_line" />
 
         <TextView
             android:id="@+id/tv_toast"
