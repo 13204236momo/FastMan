@@ -74,16 +74,26 @@ public class SelectDialog extends Dialog {
                 for (ChooseEtity entity : list){
                     entity.setSelected(false);
                 }
-
                 list.get(position).setSelected(true);
                 adapter.notifyDataSetChanged();
+
+                if (listener!=null){
+                    listener.onSelected(position);
+                }
                 dismiss();
+
             }
         });
     }
 
-    public void setData(List<ChooseEtity> list){
-
+    private OnSelectedListener listener;
+    public interface OnSelectedListener{
+        void onSelected(int position);
+    }
+    public void setOnSelectedListener(OnSelectedListener listener){
+        if (listener != null){
+            this.listener = listener;
+        }
     }
 
     public void setTitle(String title){

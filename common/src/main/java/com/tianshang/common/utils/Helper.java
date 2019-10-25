@@ -3,6 +3,7 @@ package com.tianshang.common.utils;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.Toast;
 
 public class Helper {
@@ -12,22 +13,18 @@ public class Helper {
     /**
      * 全局Toast
      *
-     * @param str
      */
-    public static void showToast(String str) {
-        if (!isMainThread(Thread.currentThread().getName())) {
-            Log.e("error","不能在异步线程调用showToast");
-            return;
-        }
-        if (mContext == null) return;
-        if (TextUtils.isEmpty(str)) return;
-        if (mToast == null) {
-            mToast = Toast.makeText(mContext, str, Toast.LENGTH_SHORT);
+    public static void showToast(String s) {
+        try {
+            if (mToast != null) {
+                mToast.setText(s);
+            } else {
+                mToast = Toast.makeText(mContext, s, Toast.LENGTH_SHORT);
+                mToast.setGravity(Gravity.CENTER, 0, 0);
+            }
             mToast.show();
-        } else {
-            mToast.setText(str);
+        } catch (Exception e) {
         }
-
     }
 
     /**

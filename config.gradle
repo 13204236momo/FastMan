@@ -45,8 +45,8 @@ ext{
             "rxpermissions": 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
             //高德地图定位
             "amap": 'com.amap.api:location:latest.integration',
-
             "androidtagview":'co.lujun:androidtagview:1.1.7',
+            "materialtextfield": 'com.github.florent37:materialtextfield:1.0.7',
 
 
             //网络请求相关

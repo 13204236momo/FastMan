@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.tianshang.common.base.mvp.BaseView;
 import com.tianshang.common.entity.app.ChooseEtity;
 import com.tianshang.common.widget.SelectDialog;
@@ -100,23 +102,46 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
                 dialog.setTitle("选择送达时间");
                 dialog.setTitleBackgroundColor(getResources().getColor(R.color.gray_line));
                 dialog.show();
+                dialog.setOnSelectedListener(new SelectDialog.OnSelectedListener() {
+                    @Override
+                    public void onSelected(int position) {
+                        tvLasTime.setText(timeList.get(position).getContent());
+                    }
+                });
                 break;
             case R.id.tv_pay_way:
                 SelectDialog dialogPay = new SelectDialog(this, payWay);
                 dialogPay.setTitle("选择支付方式");
                 dialogPay.setTitleBackgroundColor(getResources().getColor(R.color.gray_line));
                 dialogPay.show();
+                dialogPay.setOnSelectedListener(new SelectDialog.OnSelectedListener() {
+                    @Override
+                    public void onSelected(int position) {
+                        tvPayWay.setText(payWay.get(position).getContent());
+                    }
+                });
                 break;
             case R.id.tv_task_content:
-                startActivity(new Intent(this,EditMessageActivity.class));
+                Intent intent = new Intent(this,EditMessageActivity.class);
+                intent.putExtra("tag","task_content");
+                startActivityForResult(intent,1001);
                 break;
             case R.id.tv_pack_no:
+                Intent intent1 = new Intent(this,EditMessageActivity.class);
+                intent1.putExtra("tag","task_no");
+                startActivityForResult(intent1,1002);
                 break;
             case R.id.tv_pack_weight:
                 SelectDialog dialogWeight = new SelectDialog(this, weightList);
                 dialogWeight.setTitle("选择重量范围");
                 dialogWeight.setTitleBackgroundColor(getResources().getColor(R.color.gray_line));
                 dialogWeight.show();
+                dialogWeight.setOnSelectedListener(new SelectDialog.OnSelectedListener() {
+                    @Override
+                    public void onSelected(int position) {
+                        tvPackWeight.setText(weightList.get(position).getContent());
+                    }
+                });
                 break;
             case R.id.tv_pack_volume:
                 break;
@@ -137,5 +162,21 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
     @Override
     public PushTaskPresenter getPresenter() {
         return new PushTaskPresenter();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            switch (requestCode){
+                case 1001:
+                    tvTaskContent.setText(data.getStringExtra("msg"));
+                    break;
+                case 1002:
+                    tvPackNo.setText(data.getStringExtra("msg"));
+                    break;
+            }
+        }
     }
 }

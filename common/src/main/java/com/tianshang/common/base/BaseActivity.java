@@ -15,8 +15,8 @@ public class BaseActivity extends AppCompatActivity {
     protected View contentView;
     private LinearLayout llContent;
     private LinearLayout llTitle;
-    public TextView tvBaseTitle;
-    public TextView tvBaseRight;
+    private TextView tvBaseTitle;
+    private TextView tvBaseRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class BaseActivity extends AppCompatActivity {
     private void initLayout() {
         llTitle = findViewById(R.id.ll_title);
         llContent = findViewById(R.id.ll_content1);
+        tvBaseTitle = findViewById(R.id.tv_base_title);
+        tvBaseRight = findViewById(R.id.tv_base_right);
     }
 
 
@@ -55,5 +57,9 @@ public class BaseActivity extends AppCompatActivity {
         }else {
             llTitle.setVisibility(View.GONE);
         }
+    }
+
+    public void setTitle(String title){
+        tvBaseTitle.setText(title);
     }
 }
