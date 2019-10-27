@@ -1,4 +1,4 @@
-package com.tianshang.fastman.mine;
+package com.tianshang.fastman.personal;
 
 import com.tianshang.common.base.mvp.BaseModel;
 

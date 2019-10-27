@@ -19,7 +19,6 @@ import com.tianshang.fastman.R;
 import com.tianshang.fastman.task.TaskFmContract;
 import com.tianshang.fastman.task.TaskFmPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

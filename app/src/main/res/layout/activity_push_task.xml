@@ -188,31 +188,6 @@
                     android:layout_alignParentRight="true"
                     android:drawableRight="@drawable/to_right"
                     android:text="2Kg" />
-
-                <View
-                    android:id="@+id/line4"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_below="@id/tv_pack_weight"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/gray_line" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/line4"
-                    android:text="体积"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tv_pack_volume"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/line4"
-                    android:layout_alignParentRight="true"
-                    android:drawableRight="@drawable/to_right"
-                    android:text="20cm - 20cm - 2cm" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

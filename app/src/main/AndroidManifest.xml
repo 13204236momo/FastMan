@@ -35,7 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".task.PushTaskActivity" />
-        <activity android:name=".mine.LoginActivity" />
         <activity android:name=".task.EditMessageActivity" />
 
         <service android:name="com.amap.api.location.APSService" />

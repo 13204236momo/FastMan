@@ -1,7 +1,6 @@
 package com.tianshang.fastman.task;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,8 +38,6 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
     TextView tvPackNo;
     @BindView(R.id.tv_pack_weight)
     TextView tvPackWeight;
-    @BindView(R.id.tv_pack_volume)
-    TextView tvPackVolume;
     @BindView(R.id.tv_money)
     TextView tvMoney;
     @BindView(R.id.tv_toast)
@@ -89,7 +86,7 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
 
     @OnClick({R.id.ib_left, R.id.tv_address, R.id.tv_last_time, R.id.tv_pay_way,
             R.id.tv_task_content, R.id.tv_pack_no, R.id.tv_pack_weight,
-            R.id.tv_pack_volume, R.id.tv_money, R.id.tv_toast, R.id.tv_to_pay})
+            R.id.tv_money, R.id.tv_toast, R.id.tv_to_pay})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.ib_left:
@@ -142,8 +139,6 @@ public class PushTaskActivity extends BaseView<PushTaskPresenter, PushTaskContra
                         tvPackWeight.setText(weightList.get(position).getContent());
                     }
                 });
-                break;
-            case R.id.tv_pack_volume:
                 break;
             case R.id.tv_money:
                 break;

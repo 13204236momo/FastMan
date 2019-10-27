@@ -77,6 +77,7 @@ public class AddRecordDialog extends Dialog {
         switch (view.getId()) {
             case R.id.iv_cancel:
                 dismiss();
+                break;
             case R.id.iv_word:
                 context.startActivity(new Intent(context,PushTaskActivity.class));
                 dismiss();

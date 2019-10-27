@@ -1,4 +1,4 @@
-package com.tianshang.fastman.mine;
+package com.tianshang.fastman.personal;
 
 // 将Model层、View层、Presenter层协商的共同业务，封装成接口
 // 契约、合同

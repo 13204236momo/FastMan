@@ -1,17 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toLeftOf="@id/iv_setting"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/icon_message"/>
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/icon_setting"/>
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/icon_default_profile"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tv_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/iv_profile"
+            android:text="赵小高"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/tv_nick"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/iv_profile"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:text="任务量：9"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="等级：6"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="余额：189"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"/>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_task_pull"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="我的界面"/>
+        app:layout_constraintTop_toBottomOf="@id/rl_header"
+        android:layout_margin="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/corner_15_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp"
+            android:text="领取的任务"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"/>
+        <TextView
+            android:id="@+id/tv_more_pull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="10dp"
+            android:drawableRight="@drawable/to_right"
+            android:text="查看更多"
+            android:textSize="12dp"/>
+        <View
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_more_pull"
+            android:background="@color/gray_light"/>
+
+        <TextView
+            android:id="@+id/tv_un_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="未派送"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:drawableTop="@drawable/icon_deliver"
+            android:drawablePadding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+        <TextView
+            android:id="@+id/tv_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintLeft_toRightOf="@id/tv_un_finish"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="已完成"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_finish"/>
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintLeft_toRightOf="@id/tv_finish"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="已取消"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_cancel"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_task_pull"
+        android:layout_margin="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/corner_15_bg">
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp"
+            android:text="发布的任务"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"/>
+        <TextView
+            android:id="@+id/tv_more_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_1"
+            android:layout_marginRight="10dp"
+            android:drawableRight="@drawable/to_right"
+            android:text="查看更多"
+            android:textSize="12dp"/>
+        <View
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_more_push"
+            android:background="@color/gray_light"/>
+        <TextView
+            android:id="@+id/tv_un_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_un_claim"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="待付款"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_no_pay"/>
+        <TextView
+            android:id="@+id/tv_un_claim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintLeft_toRightOf="@id/tv_un_pay"
+            app:layout_constraintRight_toLeftOf="@id/tv_no_receive"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="待认领"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon__un_claim"/>
+        <TextView
+            android:id="@+id/tv_no_receive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintLeft_toRightOf="@id/tv_un_claim"
+            app:layout_constraintRight_toLeftOf="@id/tv_no_appraise"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="待收件"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_no_receive"/>
+        <TextView
+            android:id="@+id/tv_no_appraise"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintLeft_toRightOf="@id/tv_no_receive"
+            app:layout_constraintRight_toLeftOf="@id/tv_cancel_push"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="待评价"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_no_appraise"/>
+        <TextView
+            android:id="@+id/tv_cancel_push"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_no_appraise"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:text="已取消"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_cancel"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
