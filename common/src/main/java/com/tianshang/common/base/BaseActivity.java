@@ -8,8 +8,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tianshang.common.R;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class BaseActivity extends AppCompatActivity {
     protected View contentView;

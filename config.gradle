@@ -1,7 +1,7 @@
 //添加多个自定义属性，可以通过ext代码块
 ext{
     // 生产/开发环境（正式/测试）
-    isRelease = false
+    isRelease = true
 
     //用于存放APT生成的类文件
     packageNameForAPT = "com.tianshang.fastman.apt"

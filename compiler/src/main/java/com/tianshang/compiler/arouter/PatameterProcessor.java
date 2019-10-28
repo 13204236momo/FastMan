@@ -6,7 +6,7 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
-import com.tianshang.annotation.ARouter.Parameter;
+import com.tianshang.annotation.arouter.Parameter;
 import com.tianshang.compiler.arouter.factory.ParameterFactory;
 import com.tianshang.compiler.arouter.utils.Constants;
 import com.tianshang.compiler.arouter.utils.EmptyUtils;

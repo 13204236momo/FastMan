@@ -1,7 +1,7 @@
 package com.tianshang.arouter_api.core;
 
 
-import com.tianshang.annotation.ARouter.model.RouterBean;
+import com.tianshang.annotation.arouter.model.RouterBean;
 
 import java.util.Map;
 

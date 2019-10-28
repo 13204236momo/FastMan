@@ -10,8 +10,8 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.WildcardTypeName;
-import com.tianshang.annotation.ARouter.ARouter;
-import com.tianshang.annotation.ARouter.model.RouterBean;
+import com.tianshang.annotation.arouter.ARouter;
+import com.tianshang.annotation.arouter.model.RouterBean;
 import com.tianshang.compiler.arouter.utils.Constants;
 import com.tianshang.compiler.arouter.utils.EmptyUtils;
 

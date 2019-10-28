@@ -3,8 +3,8 @@ package com.tianshang.compiler.arouter.utils;
 public class Constants {
 
     //注解处理器支持的注解类型
-    public static final String AROUTER_ANNOTATION_TYPES = "com.example.componentizationdemo.annotation.ARouter";
-    public static final String PARAMETER_ANNOTATION_TYPES = "com.example.componentizationdemo.annotation.Parameter";
+    public static final String AROUTER_ANNOTATION_TYPES = "com.tianshang.annotation.arouter.ARouter";
+    public static final String PARAMETER_ANNOTATION_TYPES = "com.tianshang.annotation.arouter.Parameter";
 
     //每个子模块的模块名
     public static final String MODULE = "moduleName";
@@ -18,7 +18,7 @@ public class Constants {
     public static final String ROUTER_MANAGER = "ARouterManager";
 
     //包名前缀封装
-    public static final String BASE_PACKAGE = "com.example.componentizationdemo.api";
+    public static final String BASE_PACKAGE = "com.tianshang.arouter_api";
     //路由组Group加载接口
     public static final String AROUTE_GROUP = BASE_PACKAGE + ".core.ARouterLoadGroup";
     //路由组Group对应得详细Path加载接口

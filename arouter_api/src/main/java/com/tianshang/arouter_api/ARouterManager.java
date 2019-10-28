@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.LruCache;
 
-import com.tianshang.annotation.ARouter.model.RouterBean;
+import com.tianshang.annotation.arouter.model.RouterBean;
 import com.tianshang.arouter_api.core.ARouterLoadGroup;
 import com.tianshang.arouter_api.core.ARouterLoadPath;
 

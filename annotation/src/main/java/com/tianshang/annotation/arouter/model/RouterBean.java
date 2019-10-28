@@ -1,4 +1,4 @@
-package com.tianshang.annotation.ARouter.model;
+package com.tianshang.annotation.arouter.model;
 
 import javax.lang.model.element.Element;
 

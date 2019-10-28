@@ -1,4 +1,4 @@
-package com.tianshang.annotation.ARouter;
+package com.tianshang.annotation.arouter;
 
 
 import java.lang.annotation.ElementType;

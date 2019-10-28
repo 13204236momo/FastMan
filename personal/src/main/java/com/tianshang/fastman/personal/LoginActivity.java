@@ -3,39 +3,37 @@ package com.tianshang.fastman.personal;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.materialtextfield.MaterialTextField;
+import com.tianshang.annotation.arouter.ARouter;
 import com.tianshang.common.base.mvp.BaseView;
 
-import org.w3c.dom.Text;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
+//import butterknife.BindView;
+//import butterknife.ButterKnife;
+//import butterknife.OnClick;
+@ARouter(path = "/personal/LoginActivity")
 public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> {
 
-    @BindView(R.id.tv_login_type)
+    //@BindView(R.id.tv_login_type)
     TextView tvLoginType;
-    @BindView(R.id.tv_type)
+    //@BindView(R.id.tv_type)
     TextView tvType;
-    @BindView(R.id.et_account)
+    //@BindView(R.id.et_account)
     EditText etAccount;
-    @BindView(R.id.et_password)
+    //@BindView(R.id.et_password)
     EditText etPassword;
-    @BindView(R.id.tv_login)
+    //@BindView(R.id.tv_login)
     TextView tvLogin;
-    @BindView(R.id.tv_forget)
+    //@BindView(R.id.tv_forget)
     TextView tvForget;
-    @BindView(R.id.tv_tag)
+    //@BindView(R.id.tv_tag)
     TextView tvTag;
-    @BindView(R.id.tv_rule)
+    //@BindView(R.id.tv_rule)
     TextView tvRule;
-    @BindView(R.id.tf_password)
+    //@BindView(R.id.tf_password)
     MaterialTextField tfPassword;
 
     private int loginType = 0;
@@ -44,9 +42,9 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
-        initView();
+        //initView();
     }
 
     private void initView() {
@@ -69,23 +67,23 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
     }
 
 
-    @OnClick({R.id.tv_login_type,R.id.tv_login,R.id.tv_forget})
-    void onClick(View view){
-        switch (view.getId()){
-            case R.id.tv_login_type:
-                if (loginType == 0){
-                    loginType = 1;
-                }else {
-                    loginType = 0;
-                }
-                initView();
-                break;
-            case R.id.tv_login:
-                break;
-            case R.id.tv_forget:
-                break;
-        }
-    }
+    //@OnClick({R.id.tv_login_type,R.id.tv_login,R.id.tv_forget})
+//    void onClick(View view){
+//        switch (view.getId()){
+//            case R.id.tv_login_type:
+//                if (loginType == 0){
+//                    loginType = 1;
+//                }else {
+//                    loginType = 0;
+//                }
+//                initView();
+//                break;
+//            case R.id.tv_login:
+//                break;
+//            case R.id.tv_forget:
+//                break;
+//        }
+//    }
 
     @Override
     public LoginContract.View getContract() {
