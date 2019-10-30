@@ -10,6 +10,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
+/**
+ * Aspect 不支持跨module，目前只能每个module都有个aspect文件夹
+ */
 @Aspect //定义切片类
 public class ClickBehaviorAspect {
 
