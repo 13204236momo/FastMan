@@ -47,6 +47,7 @@ ext{
             "amap": 'com.amap.api:location:latest.integration',
             "androidtagview":'co.lujun:androidtagview:1.1.7',
             "materialtextfield": 'com.github.florent37:materialtextfield:1.0.7',
+            "aspectj":'org.aspectj:aspectjrt:1.8.13',
 
 
             //网络请求相关

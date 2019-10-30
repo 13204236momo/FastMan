@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.tianshang.arouter_api.ARouterManager;
+import com.tianshang.annotation.behaviour.LoginCheck;
 import com.tianshang.common.base.mvp.BaseViewFm;
+import com.tianshang.common.utils.Helper;
 import com.tianshang.fastman.R;
 import com.tianshang.fastman.mine.MineFmContract;
 import com.tianshang.fastman.mine.MineFmPresenter;
@@ -35,12 +36,18 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
     void onClick(View view){
         switch (view.getId()){
             case R.id.iv_profile:
-                ARouterManager.getInstance()
-                        .build("/personal/LoginActivity")
-                        .withString("username", "simon")
-                        .navigation(getContext());
+//                ARouterManager.getInstance()
+//                        .build("/personal/LoginActivity")
+//                        .withString("username", "simon")
+//                        .navigation(getContext());
+                jump();
                 break;
         }
+    }
+
+    @LoginCheck
+    private void jump(){
+        Helper.showToast("我登录啦");
     }
 
     @Override

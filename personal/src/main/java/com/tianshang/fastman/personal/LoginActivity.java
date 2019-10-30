@@ -87,8 +87,8 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
         if (id == R.id.tv_forget) {
 
         }
-
     }
+
 
     @Override
     public LoginContract.View getContract() {
