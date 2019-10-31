@@ -81,6 +81,10 @@ public class PermissionCheckAspect {
                         }
                     }
                 });
-        return null;
+        if (granted[0]){
+            return  joinPoint.proceed();
+        }else {
+            return null;
+        }
     }
 }

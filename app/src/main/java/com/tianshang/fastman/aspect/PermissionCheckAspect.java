@@ -66,12 +66,26 @@ public class PermissionCheckAspect {
                             }
                         } else {
                             Helper.showToast("请开启定位权限");
+                            String tag = "";
+                            for (String permission : permissions){
+                                if (permission.equals(Manifest.permission.CAMERA)){
+                                    tag +="相机、";
+                                }
+                                if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION)){
+                                    tag +="定位、";
+                                }
+                            }
+                            if (tag.endsWith("、")){
+                                tag = tag.substring(0,tag.length()-1);
+                            }
+                            Helper.showToast("请开启"+tag+"等权限");
+                            //Toast.makeText(activity,tag,Toast.LENGTH_SHORT).show();
+                            Log.e(TAG,tag);
                         }
-
                     }
                 });
         if (granted[0]){
-            return  joinPoint.proceed();
+            return joinPoint.proceed();
         }else {
             return null;
         }
