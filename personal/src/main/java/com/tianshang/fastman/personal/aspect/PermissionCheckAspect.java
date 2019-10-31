@@ -17,6 +17,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import java.util.concurrent.locks.LockSupport;
+
 import io.reactivex.functions.Consumer;
 
 @Aspect //定义切片类
@@ -35,16 +37,15 @@ public class PermissionCheckAspect {
 
     //2.对这些切入点如何处理
     @Around("method()")
-    public Object joinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void joinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
         Activity activity = null;
-        final boolean[] granted = new boolean[1];
         //获取签名方法
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Class<?> clazz = methodSignature.getDeclaringType();
-        if (clazz.newInstance() instanceof Fragment){
+        if (clazz.newInstance() instanceof Fragment) {
             Fragment fragment = (Fragment) joinPoint.getThis();
             activity = fragment.getActivity();
-        }else if (clazz.newInstance() instanceof Activity){
+        } else if (clazz.newInstance() instanceof Activity) {
             activity = (Activity) joinPoint.getThis();
         }
         //获取方法的注解值（需要统计的用户行为）
@@ -54,37 +55,33 @@ public class PermissionCheckAspect {
                 .request(permissions)
                 .subscribe(new Consumer<Boolean>() {
                     @Override
-                    public void accept(Boolean isGranted){
+                    public void accept(Boolean isGranted) {
+                        long id2 = Thread.currentThread().getId();
+                        Log.e(TAG,"id2:"+id2);
                         if (isGranted) {
                             try {
-                                granted[0] = isGranted;
+                                joinPoint.proceed();
                             } catch (Throwable throwable) {
                                 throwable.printStackTrace();
                             }
                         } else {
-                            Helper.showToast("请开启定位权限");
                             String tag = "";
-                            for (String permission : permissions){
-                                if (permission.equals(Manifest.permission.CAMERA)){
-                                    tag +="相机、";
+                            for (String permission : permissions) {
+                                if (permission.equals(Manifest.permission.CAMERA)) {
+                                    tag += "相机、";
                                 }
-                                if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION)){
-                                    tag +="定位、";
+                                if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                                    tag += "定位、";
                                 }
                             }
-                            if (tag.endsWith("、")){
-                                tag = tag.substring(0,tag.length()-1);
+                            if (tag.endsWith("、")) {
+                                tag = tag.substring(0, tag.length() - 1);
                             }
-                            Helper.showToast("请开启"+tag+"等权限");
+                            Helper.showToast("请开启" + tag + "等权限");
                             //Toast.makeText(activity,tag,Toast.LENGTH_SHORT).show();
-                            Log.e(TAG,tag);
+                            Log.e(TAG, tag);
                         }
                     }
                 });
-        if (granted[0]){
-            return  joinPoint.proceed();
-        }else {
-            return null;
-        }
     }
 }

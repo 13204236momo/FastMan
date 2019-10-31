@@ -108,4 +108,7 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
     public LoginPresenter getPresenter() {
         return new LoginPresenter();
     }
+
 }
+
+

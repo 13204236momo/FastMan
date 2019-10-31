@@ -38,9 +38,8 @@ public class PermissionCheckAspect {
 
     //2.对这些切入点如何处理
     @Around("method()")
-    public Object joinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void joinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
         Activity activity = null;
-        final boolean[] granted = new boolean[1];
         //获取签名方法
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Class<?> clazz = methodSignature.getDeclaringType();
@@ -60,7 +59,7 @@ public class PermissionCheckAspect {
                     public void accept(Boolean isGranted){
                         if (isGranted) {
                             try {
-                                granted[0] = isGranted;
+                                joinPoint.proceed();
                             } catch (Throwable throwable) {
                                 throwable.printStackTrace();
                             }
@@ -84,10 +83,5 @@ public class PermissionCheckAspect {
                         }
                     }
                 });
-        if (granted[0]){
-            return joinPoint.proceed();
-        }else {
-            return null;
-        }
     }
 }
