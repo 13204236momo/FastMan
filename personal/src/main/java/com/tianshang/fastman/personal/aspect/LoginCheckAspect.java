@@ -1,14 +1,11 @@
-package com.tianshang.fastman.aspect;
+package com.tianshang.fastman.personal.aspect;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.tianshang.arouter_api.ARouterManager;
-import com.tianshang.common.utils.Helper;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

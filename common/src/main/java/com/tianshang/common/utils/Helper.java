@@ -24,6 +24,7 @@ public class Helper {
             }
             mToast.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
