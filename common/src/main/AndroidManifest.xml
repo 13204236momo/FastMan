@@ -3,7 +3,16 @@
     package="com.tianshang.common">
 
     <application>
-        <activity android:name=".base.BaseActivity"></activity>
+        <activity android:name=".base.BaseActivity"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/common_file_paths" />
+        </provider>
     </application>
 
 </manifest>

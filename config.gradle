@@ -48,6 +48,8 @@ ext{
             "androidtagview":'co.lujun:androidtagview:1.1.7',
             "materialtextfield": 'com.github.florent37:materialtextfield:1.0.7',
             "aspectj":'org.aspectj:aspectjrt:1.8.13',
+            //图片剪裁库
+            "ucrop": 'com.yalantis:ucrop:2.2.0',
 
 
             //网络请求相关

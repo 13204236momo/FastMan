@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tianshang.annotation.behaviour.PermissionCheck;
 import com.tianshang.common.base.mvp.BaseViewFm;
 import com.tianshang.common.entity.app.TaskListEntity;
 import com.tianshang.common.utils.Helper;
@@ -62,20 +63,9 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
         return header;
     }
 
+    @PermissionCheck({Manifest.permission.ACCESS_COARSE_LOCATION})
     private void getPerMission() {
-        PermissionUtility.getRxPermission(getActivity())
-                .request(Manifest.permission.ACCESS_COARSE_LOCATION)
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean isGranted) throws Exception {
-                        if (isGranted) {
-                            p.getContract().requestAddress();
-                        } else {
-                            Helper.showToast("请开启定位权限");
-                        }
-
-                    }
-                });
+        p.getContract().requestAddress();
     }
 
 

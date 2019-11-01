@@ -7,17 +7,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.tianshang.annotation.arouter.ARouter;
 import com.tianshang.annotation.behaviour.PermissionCheck;
 import com.tianshang.common.base.BaseActivity;
+import com.tianshang.common.base.BaseCaptureActivity;
 import com.tianshang.common.utils.Helper;
+import com.tianshang.common.widget.PictureDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 @ARouter(path = "/personal/PersonalInfoActivity")
-public class PersonalInfoActivity extends BaseActivity {
+public class PersonalInfoActivity extends BaseCaptureActivity {
 
     @BindView(R2.id.iv_profile)
     ImageView ivProfile;
@@ -58,6 +63,31 @@ public class PersonalInfoActivity extends BaseActivity {
 
     @PermissionCheck({Manifest.permission.CAMERA})
     private void getProfile() {
-        Helper.showToast("我有相机权限");
+
+        PictureDialog dialog = new PictureDialog(this);
+        dialog.setOnClickListener(new PictureDialog.OnClickListener() {
+            @Override
+            public void onClickTop() {
+                takePhoto();
+            }
+
+            @Override
+            public void onClickBottom() {
+                pickPhoto();
+            }
+        });
+        dialog.show();
+    }
+
+    @Override
+    protected void onPhotoTook(String photoPath) {
+        RequestOptions options = new RequestOptions();
+        options.placeholder(R.drawable.icon_default_profile); //设置加载未完成时的占位图
+        options.error(R.drawable.icon_default_profile); //设置加载异常时的占位图
+        Glide.with(this)
+                .load(photoPath)
+                .apply(options)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
+                .into(ivProfile);
     }
 }

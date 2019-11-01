@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!--<paths>--><!--<external-path--><!--name="lib_update_app_files"--><!--path="."/>--><!--</paths>-->
+
+<resources>
+    <paths>
+        <external-path
+            name="DCIM"
+            path="" />
+    </paths>
+</resources>
