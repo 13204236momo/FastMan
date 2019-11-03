@@ -4,6 +4,7 @@
 
     <application>
         <activity android:name=".base.BaseActivity"/>
+        <activity android:name="com.yalantis.ucrop.UCropActivity"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"

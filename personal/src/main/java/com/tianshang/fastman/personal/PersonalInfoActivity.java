@@ -10,12 +10,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.tianshang.annotation.arouter.ARouter;
 import com.tianshang.annotation.behaviour.PermissionCheck;
-import com.tianshang.common.base.BaseActivity;
 import com.tianshang.common.base.BaseCaptureActivity;
-import com.tianshang.common.utils.Helper;
+import com.tianshang.common.entity.personal.AddressEntity;
+import com.tianshang.common.utils.Contracts;
+import com.tianshang.common.widget.CityRollerDialog;
 import com.tianshang.common.widget.PictureDialog;
+import com.tianshang.common.widget.CalendarRollerDialog;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,14 +62,32 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
 
         } else if (id == R.id.tv_sex) {
 
-        } else if (id == R.id.tv_sex) {
-
+        } else if (id == R.id.tv_birthday) {
+            CalendarRollerDialog dialog = new CalendarRollerDialog(this);
+            dialog.setOnSelectedListener(new CalendarRollerDialog.OnSelectedListener() {
+                @Override
+                public void onSelected(String content) {
+                    tvBirthday.setText(content);
+                }
+            });
+            dialog.show();
         } else if (id == R.id.tv_address) {
-
+            Type listType = new TypeToken<ArrayList<AddressEntity>>(){}.getType();
+            List<AddressEntity> o = new Gson().fromJson(Contracts.address, listType);
+            CityRollerDialog dialog = new CityRollerDialog(this,o);
+            dialog.setOnSelectedListener(new CityRollerDialog.OnSelectedListener() {
+                @Override
+                public void onSelected(String content) {
+                    tvAddress.setText(content);
+                }
+            });
+            dialog.show();
         }
     }
 
-    @PermissionCheck({Manifest.permission.CAMERA})
+
+
+    @PermissionCheck({Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE})
     private void getProfile() {
 
         PictureDialog dialog = new PictureDialog(this);

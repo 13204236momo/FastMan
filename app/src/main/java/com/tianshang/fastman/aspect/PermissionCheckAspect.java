@@ -64,7 +64,6 @@ public class PermissionCheckAspect {
                                 throwable.printStackTrace();
                             }
                         } else {
-                            Helper.showToast("请开启定位权限");
                             String tag = "";
                             for (String permission : permissions){
                                 if (permission.equals(Manifest.permission.CAMERA)){
@@ -72,6 +71,12 @@ public class PermissionCheckAspect {
                                 }
                                 if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION)){
                                     tag +="定位、";
+                                }
+                                if (permission.equals(Manifest.permission.READ_EXTERNAL_STORAGE)){
+                                    tag +="文件读取";
+                                }
+                                if (permission.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                                    tag +="文件写入";
                                 }
                             }
                             if (tag.endsWith("、")){

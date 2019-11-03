@@ -73,6 +73,12 @@ public class PermissionCheckAspect {
                                 if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                                     tag += "定位、";
                                 }
+                                if (permission.equals(Manifest.permission.READ_EXTERNAL_STORAGE)){
+                                    tag +="文件读取";
+                                }
+                                if (permission.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                                    tag +="文件写入";
+                                }
                             }
                             if (tag.endsWith("、")) {
                                 tag = tag.substring(0, tag.length() - 1);
