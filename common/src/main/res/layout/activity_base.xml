@@ -39,6 +39,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginRight="15dp"
             android:textColor="@android:color/white"
-            android:text="完成"/>
+            android:text="完成"
+            android:visibility="invisible"/>
     </LinearLayout>
 </LinearLayout>

@@ -60,4 +60,12 @@ public class BaseActivity extends AppCompatActivity {
     public void setTitle(String title){
         tvBaseTitle.setText(title);
     }
+
+    public void setRightVisibility(boolean isShow){
+        if (isShow){
+            tvBaseRight.setVisibility(View.VISIBLE);
+        }else {
+            tvBaseRight.setVisibility(View.INVISIBLE);
+        }
+    }
 }

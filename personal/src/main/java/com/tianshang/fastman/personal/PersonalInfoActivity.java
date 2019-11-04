@@ -51,12 +51,15 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
         contentView(R.layout.activity_personal_info);
         ButterKnife.bind(this);
         setTitle("个人资料");
+        setRightVisibility(true);
     }
 
-    @OnClick({R2.id.iv_profile, R2.id.tv_sex, R2.id.tv_birthday, R2.id.tv_address})
+    @OnClick({ R2.id.iv_base_left,R2.id.iv_profile, R2.id.tv_sex, R2.id.tv_birthday, R2.id.tv_address})
     void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.iv_profile) {
+        if (id == R.id.iv_base_left){
+            finish();
+        }else if (id == R.id.iv_profile) {
             getProfile();
         } else if (id == R.id.iv_profile) {
 
@@ -84,7 +87,6 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
             dialog.show();
         }
     }
-
 
 
     @PermissionCheck({Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE})

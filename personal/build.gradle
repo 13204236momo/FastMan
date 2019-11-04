@@ -167,9 +167,9 @@ import org.aspectj.tools.ajc.Main
 final def log = project.logger
 final def variants
 if (isRelease) {
-   variants = project.android.libraryVariants
+    variants = project.android.libraryVariants
 } else {
-   variants = project.android.applicationVariants
+    variants = project.android.applicationVariants
 }
 
 variants.all { variant ->

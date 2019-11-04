@@ -77,6 +77,9 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
                         .navigation(getContext());
                 break;
             case R.id.iv_setting:
+                ARouterManager.getInstance()
+                        .build("/personal/SettingActivity")
+                        .navigation(getContext());
                 break;
             case R.id.iv_message:
                 break;
