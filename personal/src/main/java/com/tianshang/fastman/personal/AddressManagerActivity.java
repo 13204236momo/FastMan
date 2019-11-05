@@ -31,7 +31,7 @@ public class AddressManagerActivity extends BaseActivity {
         setTitle("收货地址管理");
     }
 
-    @OnClick({R2.id.tv_add_address})
+    @OnClick({R2.id.iv_base_left,R2.id.tv_add_address})
     void onClick(View view) {
         int id = view.getId();
 

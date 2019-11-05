@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         style="@style/textView_item"
         app:layout_constraintTop_toBottomOf="@id/line1"
-        android:text="账号管理"/>
+        android:text="账户管理"/>
     <View
         android:id="@+id/line2"
         android:layout_width="match_parent"
