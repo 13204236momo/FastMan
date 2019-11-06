@@ -65,9 +65,8 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
 
     @OnClick({R.id.iv_profile, R.id.iv_setting, R.id.tv_more_pull,
             R.id.tv_un_finish, R.id.tv_finish, R.id.tv_cancel,
-            R.id.tv_un_pay, R.id.cl_task_pull, R.id.tv_un_claim,
-            R.id.tv_no_receive, R.id.tv_no_appraise, R.id.tv_cancel_push,
-            R.id.iv_message})
+            R.id.tv_un_pay, R.id.tv_un_claim, R.id.tv_no_receive,
+            R.id.tv_no_appraise, R.id.tv_cancel_push, R.id.iv_message})
     @LoginCheck
     void onClick(View view) {
         switch (view.getId()) {
@@ -84,6 +83,9 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
             case R.id.iv_message:
                 break;
             case R.id.tv_more_pull:
+                ARouterManager.getInstance()
+                        .build("/order/PullOrderManagerActivity")
+                        .navigation(getContext());
                 break;
             case R.id.tv_un_finish:
                 break;
@@ -92,8 +94,6 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
             case R.id.tv_cancel:
                 break;
             case R.id.tv_un_pay:
-                break;
-            case R.id.cl_task_pull:
                 break;
             case R.id.tv_un_claim:
                 break;

@@ -17,7 +17,7 @@ ext{
     ]
     appId = [
             app: "com.tianshang.fastman",
-//            order: "com.example.componentizationdemo.order",
+            order: "com.tianshang.fastman.order",
             personal: "com.tianshang.fastman.personal",
             common: "com.tianshang.common"
     ]
@@ -50,6 +50,7 @@ ext{
             "aspectj":'org.aspectj:aspectjrt:1.8.13',
             //图片剪裁库
             "ucrop": 'com.yalantis:ucrop:2.2.0',
+            "tablayout": 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar',
 
 
             //网络请求相关

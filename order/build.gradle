@@ -1,4 +1,9 @@
-apply plugin: 'com.android.application'
+if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
+    apply plugin: 'com.android.library'
+    apply plugin: 'com.jakewharton.butterknife'
+} else {
+    apply plugin: 'com.android.application'
+}
 //赋值与引用
 def androidId = rootProject.ext.androidId
 def support = rootProject.ext.dependencies
@@ -9,15 +14,15 @@ android {
     signingConfigs {
         //默认的debug签名信息，通过数据线安装就是用的这个
         debug {
-            //storeFile file('/Users/zhoumohan/.android/debug.keystore')
-            storeFile file('C:\\Users\\zhoumohan\\.android\\debug.keystore')
+            storeFile file('/Users/zhoumohan/.android/debug.keystore')
+            //storeFile file('C:\\Users\\zhoumohan\\.android\\debug.keystore')
             storePassword 'android'
             keyAlias = 'androiddebugkey'
             keyPassword 'android'
         }
         release {
-            storeFile file('D:\\androidstudio\\demo\\FastMan\\release.ketstore')
-            //storeFile file('/Users/zhoumohan/AndroidStudioProjects/FastMan/release.ketstore')
+            //storeFile file('D:\\androidstudio\\demo\\FastMan\\release.ketstore')
+            storeFile file('/Users/zhoumohan/AndroidStudioProjects/FastMan/release.ketstore')
             storePassword 'tianshangfastman'
             keyAlias = 'tianshangfastman'
             keyPassword 'tianshangfastman'
@@ -29,7 +34,9 @@ android {
     compileSdkVersion androidId.compileSdkVersion
     buildToolsVersion androidId.buildToolsVersion
     defaultConfig {
-        applicationId appId.app
+        if (!isRelease) {
+            applicationId appId.order
+        }
         minSdkVersion androidId.minSdkVersion
         targetSdkVersion androidId.targetSdkVersion
         versionCode androidId.versionCode
@@ -57,7 +64,7 @@ android {
             main {
                 if (!isRelease) {
                     //如果是组件化模式，需要单独运行时
-                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                    manifest.srcFile 'src/main/debug/AndroidManifest.xml'
                     java.srcDirs = ['src/main/java']
                     res.srcDirs = ['src/main/res']
                     resources.srcDirs = ['src/main/resources']
@@ -66,6 +73,10 @@ android {
                 } else {
                     //集成化模式，整个项目打包
                     manifest.srcFile 'src/main/AndroidManifest.xml'
+                    java {
+                        // release 时 debug 目录下文件不需要合并到主工程
+                        exclude '**/debug/**'
+                    }
                 }
             }
         }
@@ -116,8 +127,7 @@ android {
                 // '--main-dex-list=' + '/multidex-config.txt', // 打包到主classes.dex的文件列表
                 '--minimal-main-dex'
         ]
-    }
-    // 执行 gradle lint 命令即可运行 lint 检查，默认生成的报告在 outputs/lint-results.html 中
+    }// 执行 gradle lint 命令即可运行 lint 检查，默认生成的报告在 outputs/lint-results.html 中
     lintOptions {
         // 遇到 lint 检查错误会终止构建，一般设置为 false
         abortOnError false
@@ -147,11 +157,6 @@ dependencies {
     implementation project(':annotation')
     //注解处理器
     annotationProcessor project(':compiler')
-
-    if (isRelease) {
-        implementation project(':order')
-        implementation project(':personal')
-    }
 }
 
 //aspectj 规定配置
@@ -160,7 +165,12 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 final def log = project.logger
-final def variants = project.android.applicationVariants
+final def variants
+if (isRelease) {
+    variants = project.android.libraryVariants
+} else {
+    variants = project.android.applicationVariants
+}
 
 variants.all { variant ->
     if (!variant.buildType.isDebuggable()) {
