@@ -63,7 +63,7 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
         ButterKnife.bind(this, view);
     }
 
-    @OnClick({R.id.iv_profile, R.id.iv_setting, R.id.tv_more_pull,
+    @OnClick({R.id.iv_profile, R.id.iv_setting, R.id.tv_more_pull,R.id.tv_more_push,
             R.id.tv_un_finish, R.id.tv_finish, R.id.tv_cancel,
             R.id.tv_un_pay, R.id.tv_un_claim, R.id.tv_no_receive,
             R.id.tv_no_appraise, R.id.tv_cancel_push, R.id.iv_message})
@@ -82,10 +82,13 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
                 break;
             case R.id.iv_message:
                 break;
-            case R.id.tv_more_pull:
+            case R.id.tv_more_push:
                 ARouterManager.getInstance()
-                        .build("/order/PullOrderManagerActivity")
+                        .build("/order/PushOrderManagerActivity")
                         .navigation(getContext());
+                break;
+            case R.id.tv_more_pull:
+
                 break;
             case R.id.tv_un_finish:
                 break;

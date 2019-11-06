@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
-    private List<Fragment> mList = new ArrayList<Fragment>();
+    private List<Fragment> mList;
 
     public MainPagerAdapter(FragmentManager fm , List<Fragment> list) {
         super(fm);

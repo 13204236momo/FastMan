@@ -1,7 +1,13 @@
 package com.tianshang.common.base;
 
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -11,6 +17,7 @@ import com.tianshang.common.R;
 import com.tianshang.common.entity.TabEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class FragmentManagerActivity extends BaseActivity {
@@ -19,11 +26,13 @@ public abstract class FragmentManagerActivity extends BaseActivity {
     public ViewPager vpPull;
 
     public ArrayList<String> mTitles;
+    public ArrayList<Fragment> fragments;
+    private BaseFragmentAdapter adapter;
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        contentView(R.layout.activity_pull_order_manager);
+        contentView(R.layout.activity_manager);
 
 
         initView();
@@ -41,6 +50,10 @@ public abstract class FragmentManagerActivity extends BaseActivity {
             }
         }
         tlPull.setTabData(mTabEntities);
+
+        setFragments();
+        adapter = new BaseFragmentAdapter(getSupportFragmentManager(),fragments);
+        vpPull.setAdapter(adapter);
 
     }
 
@@ -76,5 +89,30 @@ public abstract class FragmentManagerActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 指示器
+     */
     public abstract void setTitles();
+
+    public abstract void setFragments();
+
+    public class BaseFragmentAdapter extends FragmentPagerAdapter {
+
+        private List<Fragment> mList;
+
+        public BaseFragmentAdapter(FragmentManager fm , List<Fragment> list) {
+            super(fm);
+            this.mList = list;
+        }
+
+        @Override
+        public int getCount() {
+            return mList != null ? mList.size() : 0;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mList.get(position);
+        }
+    }
 }
