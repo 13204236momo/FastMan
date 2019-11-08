@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_task"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".push.PushOrderFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <com.scwang.smartrefresh.layout.header.ClassicsHeader
+        srlClassicsSpinnerStyle="FixedBehind"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brown"/>
+    <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+        srlClassicsSpinnerStyle="FixedBehind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

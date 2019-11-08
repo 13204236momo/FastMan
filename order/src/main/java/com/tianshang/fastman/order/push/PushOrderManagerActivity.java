@@ -35,8 +35,8 @@ public class PushOrderManagerActivity extends FragmentManagerActivity {
     @Override
     public void setFragments() {
         fragments = new ArrayList<>();
-        for (int i = 0; i<5;i++){
-            fragments.add(new PushOrderFragment());
+        for (int i = 1; i<6;i++){
+            fragments.add(new PushOrderFragment(i));
         }
     }
 }
