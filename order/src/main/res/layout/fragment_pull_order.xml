@@ -12,8 +12,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_order"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/brown"/>
+        android:layout_height="wrap_content"/>
     <com.scwang.smartrefresh.layout.footer.ClassicsFooter
         srlClassicsSpinnerStyle="FixedBehind"
         android:layout_width="match_parent"

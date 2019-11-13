@@ -18,7 +18,8 @@
         tl:tl_indicator_corner_radius="1.5dp"
         tl:tl_indicator_height="3dp"
         tl:tl_indicator_width="10dp"
-        tl:tl_textsize="14sp" />
+        tl:tl_textsize="14sp"
+        android:background="@color/colorPrimary"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_pull"
         android:layout_width="match_parent"

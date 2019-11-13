@@ -62,6 +62,7 @@ public class PushOrderFragment extends BaseViewFm<PushOrderFmPresenter, PushOrde
         list.add("到12栋圆通快递取件");
         list.add("到三食堂买大份黄焖鸡");
         adapter = new PushOrderAdapter(list);
+        rvOrder.setAdapter(adapter);
     }
 
 
