@@ -77,12 +77,10 @@ public class EditAddressActivity extends BaseActivity {
     }
 
 
-    @OnClick({R2.id.iv_base_left, R2.id.iv_name, R2.id.iv_phone, R2.id.iv_address_city, R2.id.iv_address_des, R2.id.tv_save})
+    @OnClick({ R2.id.iv_name, R2.id.iv_phone, R2.id.iv_address_city, R2.id.iv_address_des, R2.id.tv_save})
     void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.iv_base_left) {
-            finish();
-        } else if (id == R.id.iv_name) {
+        if (id == R.id.iv_name) {
             clearText(etName, ivName);
         } else if (id == R.id.iv_phone) {
             clearText(etPhone, ivPhone);

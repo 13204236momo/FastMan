@@ -31,19 +31,17 @@ public class AddressManagerActivity extends BaseActivity {
         setTitle("收货地址管理");
     }
 
-    @OnClick({R2.id.iv_base_left,R2.id.tv_add_address})
+    @OnClick({R2.id.tv_add_address})
     void onClick(View view) {
         int id = view.getId();
 
-        if (id == R.id.iv_base_left) {
-            finish();
-        } else if (id == R.id.tv_add_address) {
+        if (id == R.id.tv_add_address) {
             Bundle bundle = new Bundle();
-            PersonalAddressEntity personalAddressEntity = new PersonalAddressEntity("周默晗","17611417293","北京-北京","北京航空航天大学4栋802",true);
-            bundle.putParcelable("address",personalAddressEntity);
+            PersonalAddressEntity personalAddressEntity = new PersonalAddressEntity("周默晗", "17611417293", "北京-北京", "北京航空航天大学4栋802", true);
+            bundle.putParcelable("address", personalAddressEntity);
             ARouterManager.getInstance()
                     .build("/personal/EditAddressActivity")
-                    .withBundle("addressMessage",bundle)
+                    .withBundle("addressMessage", bundle)
                     .navigation(this);
         }
     }

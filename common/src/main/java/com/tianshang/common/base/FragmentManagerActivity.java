@@ -96,6 +96,10 @@ public abstract class FragmentManagerActivity extends BaseActivity {
 
     public abstract void setFragments();
 
+    public void setPosition(int position){
+        vpPull.setCurrentItem(position);
+    }
+
     public class BaseFragmentAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> mList;

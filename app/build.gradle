@@ -81,11 +81,12 @@ android {
 
     buildTypes {
         debug {
-            signingConfigs.debug
+            signingConfig signingConfigs.debug
             buildConfigField("String", "debug", "\"${url.debug}\"")
         }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             buildConfigField("String", "debug", "\"${url.release}\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -130,6 +131,20 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //指定了新的apk的文件名
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def file = output.outputFile
+            if (file != null && file.name.endsWith('.apk')) {
+                if(variant.buildType.name == "debug"){
+                    outputFileName = "androidpro-v${variant.versionName}-debug.apk"
+                }else if (variant.buildType.name == "release"){
+                    outputFileName = "androidpro-v${variant.versionName}-release.apk"
+                }
+            }
+        }
     }
 }
 

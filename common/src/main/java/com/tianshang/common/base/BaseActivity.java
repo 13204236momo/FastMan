@@ -2,6 +2,7 @@ package com.tianshang.common.base;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,12 +16,14 @@ public class BaseActivity extends AppCompatActivity {
     private LinearLayout llTitle;
     private TextView tvBaseTitle;
     private TextView tvBaseRight;
+    private ImageView ivBaseLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         initLayout();
+        initEvent();
     }
 
 
@@ -29,6 +32,16 @@ public class BaseActivity extends AppCompatActivity {
         llContent = findViewById(R.id.ll_content1);
         tvBaseTitle = findViewById(R.id.tv_base_title);
         tvBaseRight = findViewById(R.id.tv_base_right);
+        ivBaseLeft = findViewById(R.id.iv_base_left);
+    }
+
+    private void initEvent(){
+        ivBaseLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

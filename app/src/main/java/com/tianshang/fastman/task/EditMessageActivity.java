@@ -94,12 +94,9 @@ public class EditMessageActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.iv_base_left,R.id.tv_base_right})
+    @OnClick({R.id.tv_base_right})
     void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_base_left:
-                finish();
-                break;
             case R.id.tv_base_right:
                 Intent intent = new Intent();
                 if (tag.equals("task_content")){

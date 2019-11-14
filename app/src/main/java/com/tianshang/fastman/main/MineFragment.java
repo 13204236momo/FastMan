@@ -85,6 +85,7 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
             case R.id.tv_more_push:
                 ARouterManager.getInstance()
                         .build("/order/PushOrderManagerActivity")
+                        .withInt("position",0)
                         .navigation(getContext());
                 break;
             case R.id.tv_more_pull:
@@ -97,14 +98,34 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
             case R.id.tv_cancel:
                 break;
             case R.id.tv_un_pay:
+                ARouterManager.getInstance()
+                        .build("/order/PushOrderManagerActivity")
+                        .withInt("position",0)
+                        .navigation(getContext());
                 break;
             case R.id.tv_un_claim:
+                ARouterManager.getInstance()
+                        .build("/order/PushOrderManagerActivity")
+                        .withInt("position",1)
+                        .navigation(getContext());
                 break;
             case R.id.tv_no_receive:
+                ARouterManager.getInstance()
+                        .build("/order/PushOrderManagerActivity")
+                        .withInt("position",2)
+                        .navigation(getContext());
                 break;
             case R.id.tv_no_appraise:
+                ARouterManager.getInstance()
+                        .build("/order/PushOrderManagerActivity")
+                        .withInt("position",3)
+                        .navigation(getContext());
                 break;
             case R.id.tv_cancel_push:
+                ARouterManager.getInstance()
+                        .build("/order/PushOrderManagerActivity")
+                        .withInt("position",4)
+                        .navigation(getContext());
                 break;
         }
     }

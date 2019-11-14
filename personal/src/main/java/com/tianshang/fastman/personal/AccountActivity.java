@@ -1,6 +1,5 @@
 package com.tianshang.fastman.personal;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
@@ -13,5 +12,6 @@ public class AccountActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contentView(R.layout.activity_account);
+        setTitle("账户管理");
     }
 }

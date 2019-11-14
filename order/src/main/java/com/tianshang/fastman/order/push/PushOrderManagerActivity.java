@@ -9,16 +9,18 @@ import java.util.ArrayList;
 
 @ARouter(path = "/order/PushOrderManagerActivity")
 public class PushOrderManagerActivity extends FragmentManagerActivity {
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        setTitle("任务管理");
     }
 
     private void initView() {
-
-
+        position = getIntent().getIntExtra("position", 0);
+        setPosition(position);
     }
 
 
@@ -35,7 +37,7 @@ public class PushOrderManagerActivity extends FragmentManagerActivity {
     @Override
     public void setFragments() {
         fragments = new ArrayList<>();
-        for (int i = 1; i<6;i++){
+        for (int i = 1; i < 6; i++) {
             fragments.add(new PushOrderFragment(i));
         }
     }

@@ -54,12 +54,10 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
         setRightVisibility(true);
     }
 
-    @OnClick({ R2.id.iv_base_left,R2.id.iv_profile, R2.id.tv_sex, R2.id.tv_birthday, R2.id.tv_address})
+    @OnClick({R2.id.iv_profile, R2.id.tv_sex, R2.id.tv_birthday, R2.id.tv_address})
     void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.iv_base_left){
-            finish();
-        }else if (id == R.id.iv_profile) {
+       if (id == R.id.iv_profile) {
             getProfile();
         } else if (id == R.id.iv_profile) {
 

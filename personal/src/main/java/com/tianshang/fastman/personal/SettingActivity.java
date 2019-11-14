@@ -35,7 +35,7 @@ public class SettingActivity extends BaseActivity {
         setTitle("设置");
     }
 
-    @OnClick({R2.id.iv_base_left,R2.id.tv_personal,R2.id.tv_account,R2.id.tv_address,R2.id.tv_last,R2.id.tv_about})
+    @OnClick({R2.id.tv_personal,R2.id.tv_account,R2.id.tv_address,R2.id.tv_last,R2.id.tv_about})
     void onClick(View view){
         int id = view.getId();
         if (id==R.id.tv_personal){
@@ -50,8 +50,6 @@ public class SettingActivity extends BaseActivity {
 
         }else if (id==R.id.tv_about){
 
-        }else if (id==R.id.iv_base_left){
-            finish();
         }else if (id==R.id.tv_account){
             ARouterManager.getInstance()
                     .build("/personal/AccountActivity")
