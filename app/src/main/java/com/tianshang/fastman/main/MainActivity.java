@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.tianshang.annotation.arouter.ARouter;
 import com.tianshang.common.retrofit.RetrofitHelper;
 import com.tianshang.common.retrofit.RetrofitRequest;
 import com.tianshang.common.retrofit.result.CommonListResult;
@@ -27,7 +28,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-
+@ARouter(path = "/app/MainActivity")
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.vp_main)
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Fragment> mFragmentList = new ArrayList<>();
 
+    private int currentTab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initView();
+        initData();
     }
 
     private void initView() {
@@ -60,23 +64,24 @@ public class MainActivity extends BaseActivity {
         vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mFragmentList));
         tvTab1.setTextColor(getResources().getColor(R.color.brown));
         tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
-//        tvTab3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
-//
+
 //        tvTab2.setOnClickListener(v -> http());
+    }
+
+    private void initData(){
+        currentTab = getIntent().getIntExtra("tab",1);
+        if (currentTab == 1){
+            selectTab1();
+        }else if (currentTab == 3){
+            selectTab3();
+        }
     }
 
     @OnClick({R.id.tab1,R.id.tab2,R.id.tab3})
     void onClick(View view){
         switch (view.getId()){
             case R.id.tab1:
-                tvTab1.setTextColor(getResources().getColor(R.color.brown));
-                tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
-                tvTab2.setTextColor(getResources().getColor(R.color.black));
-                tvTab2.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
-                tvTab3.setTextColor(getResources().getColor(R.color.black));
-                tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
-
-                vpMain.setCurrentItem(0);
+               selectTab1();
                 break;
             case R.id.tab2:
                 tvTab1.setTextColor(getResources().getColor(R.color.black));
@@ -85,21 +90,38 @@ public class MainActivity extends BaseActivity {
                 tvTab2.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
                 tvTab3.setTextColor(getResources().getColor(R.color.black));
                 tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
-
                 addRecord();
                 break;
             case R.id.tab3:
-                tvTab1.setTextColor(getResources().getColor(R.color.black));
-                tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
-                tvTab2.setTextColor(getResources().getColor(R.color.black));
-                tvTab2.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
-                tvTab3.setTextColor(getResources().getColor(R.color.brown));
-                tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
-
-                vpMain.setCurrentItem(1);
+               selectTab3();
                 break;
         }
     }
+
+
+    private void selectTab1(){
+        tvTab1.setTextColor(getResources().getColor(R.color.brown));
+        tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
+        tvTab2.setTextColor(getResources().getColor(R.color.black));
+        tvTab2.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
+        tvTab3.setTextColor(getResources().getColor(R.color.black));
+        tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
+        vpMain.setCurrentItem(0);
+    }
+
+    private void selectTab3(){
+        tvTab1.setTextColor(getResources().getColor(R.color.black));
+        tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
+        tvTab2.setTextColor(getResources().getColor(R.color.black));
+        tvTab2.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
+        tvTab3.setTextColor(getResources().getColor(R.color.brown));
+        tvTab3.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
+        vpMain.setCurrentItem(1);
+    }
+
+
+
+
 
     private void addRecord() {
         Dialog dialog = new AddRecordDialog(this);

@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 
 import com.tianshang.arouter_api.ARouterManager;
+import com.tianshang.common.utils.PreferencesUtil;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -43,13 +44,10 @@ public class LoginCheckAspect {
             context = (Context)  joinPoint.getThis();
         }
 
-        if (true) { //正式项目从sharedPreferences中读取
-            //Log.e(TAG, "检测到已登录");
+        if (PreferencesUtil.getInstance().isLogin()) { //正式项目从sharedPreferences中读取
             return joinPoint.proceed();
         } else {
             if (context!=null){
-//                Log.e(TAG, "检测到未登录");
-//                Toast.makeText(context, "请先登录！", Toast.LENGTH_LONG).show();
                 ARouterManager.getInstance()
                         .build("/personal/LoginActivity")
                         .withString("username", "simon")

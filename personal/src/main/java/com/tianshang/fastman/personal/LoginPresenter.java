@@ -10,9 +10,10 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginContract.P
         return new LoginContract.Presenter<UserInfo>() {
             @Override
             public void requestLogin(String name, String pwd) {
-                try {
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if ("netease".equals(name) && "163".equals(pwd)) {
+                    responseResult(new UserInfo("网易", "zhou"));
+                } else {
+                    responseResult(null);
                 }
             }
 

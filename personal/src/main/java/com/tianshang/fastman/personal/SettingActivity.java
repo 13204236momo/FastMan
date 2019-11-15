@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tianshang.annotation.arouter.ARouter;
 import com.tianshang.arouter_api.ARouterManager;
 import com.tianshang.common.base.BaseActivity;
+import com.tianshang.common.utils.PreferencesUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +27,8 @@ public class SettingActivity extends BaseActivity {
     TextView tvLast;
     @BindView(R2.id.tv_about)
     TextView tvAbout;
+    @BindView(R2.id.tv_quite)
+    TextView tvQuite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class SettingActivity extends BaseActivity {
         setTitle("设置");
     }
 
-    @OnClick({R2.id.tv_personal,R2.id.tv_account,R2.id.tv_address,R2.id.tv_last,R2.id.tv_about})
+    @OnClick({R2.id.tv_personal,R2.id.tv_account,R2.id.tv_address,R2.id.tv_last,R2.id.tv_about,R2.id.tv_quite})
     void onClick(View view){
         int id = view.getId();
         if (id==R.id.tv_personal){
@@ -54,6 +57,9 @@ public class SettingActivity extends BaseActivity {
             ARouterManager.getInstance()
                     .build("/personal/AccountActivity")
                     .navigation(this);
+        }else if (id==R.id.tv_quite){
+            //TODO 清除用户信息缓存
+            PreferencesUtil.getInstance().setLogin(false);
         }
     }
 }

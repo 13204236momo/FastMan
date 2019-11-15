@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import com.github.florent37.materialtextfield.MaterialTextField;
 import com.tianshang.annotation.arouter.ARouter;
+import com.tianshang.arouter_api.ARouterManager;
 import com.tianshang.common.base.mvp.BaseView;
+import com.tianshang.common.utils.PreferencesUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,8 +83,13 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
             initView();
         }
         if (id == R.id.tv_login) {
-            startActivity(new Intent(this, VerificationActivity.class));
+            if (loginType == 1) {
+                p.getContract().requestLogin(etAccount.getText().toString(),etPassword.getText().toString());
+            } else {
+                startActivity(new Intent(this, VerificationActivity.class));
+            }
         }
+
 
         if (id == R.id.tv_forget) {
 
@@ -96,7 +103,11 @@ public class LoginActivity extends BaseView<LoginPresenter, LoginContract.View> 
             @Override
             public void handlerResult(UserInfo userInfo) {
                 if (userInfo != null) {
-                    Toast.makeText(LoginActivity.this, userInfo.toString(), Toast.LENGTH_LONG).show();
+                    PreferencesUtil.getInstance().setLogin(true);
+                    ARouterManager.getInstance()
+                            .build("/app/MainActivity")
+                            .withInt("tab",3)
+                            .navigation(LoginActivity.this);
                 } else {
                     Toast.makeText(LoginActivity.this, "登录失败！", Toast.LENGTH_LONG).show();
                 }
