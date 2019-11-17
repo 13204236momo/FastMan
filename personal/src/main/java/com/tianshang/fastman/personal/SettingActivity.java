@@ -36,6 +36,16 @@ public class SettingActivity extends BaseActivity {
         contentView(R.layout.activity_setting);
         ButterKnife.bind(this);
         setTitle("设置");
+
+        initView();
+    }
+
+    private void initView() {
+        if (PreferencesUtil.getInstance().isLogin()){
+            tvQuite.setVisibility(View.VISIBLE);
+        }else {
+            tvQuite.setVisibility(View.GONE);
+        }
     }
 
     @OnClick({R2.id.tv_personal,R2.id.tv_account,R2.id.tv_address,R2.id.tv_last,R2.id.tv_about,R2.id.tv_quite})
@@ -60,6 +70,11 @@ public class SettingActivity extends BaseActivity {
         }else if (id==R.id.tv_quite){
             //TODO 清除用户信息缓存
             PreferencesUtil.getInstance().setLogin(false);
+            ARouterManager.getInstance()
+                    .build("/app/MainActivity")
+                    .withInt("tab",3)
+                    .navigation(SettingActivity.this);
+
         }
     }
 }

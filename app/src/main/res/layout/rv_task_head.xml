@@ -13,7 +13,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="15dp"
-        android:text="未完成订单:8"/>
+        android:text="未完成订单:8"
+        android:textColor="@android:color/white"/>
     <TextView
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
@@ -22,5 +23,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="15dp"
-        android:text="南昌航空大学"/>
+        android:text="南昌航空大学"
+        android:textColor="@android:color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

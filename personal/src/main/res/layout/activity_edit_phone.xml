@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    tools:context=".EditPhoneNumActivity">
+    android:padding="30dp"
+    tools:contexFt=".EditPhoneNumActivity">
 
     <TextView
         android:id="@+id/tv_1"
@@ -23,7 +23,8 @@
         android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@id/tv_1"
         android:hint="请输入手机号"
-        android:background="@drawable/et_bg"/>
+        android:background="@drawable/et_bg"
+        android:textSize="13sp"/>
 
     <TextView
         android:id="@+id/tv_2"
@@ -45,6 +46,7 @@
         app:layout_constraintRight_toLeftOf="@id/btn_get"
         app:layout_constraintTop_toBottomOf="@id/tv_2"
         android:hint="请输入短信验证码"
+        android:textSize="13sp"
         android:background="@drawable/et_bg"/>
 
     <Button

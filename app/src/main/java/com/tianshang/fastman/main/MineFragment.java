@@ -89,13 +89,28 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
                         .navigation(getContext());
                 break;
             case R.id.tv_more_pull:
-
+                ARouterManager.getInstance()
+                        .build("/order/PullOrderManagerActivity")
+                        .withInt("position",0)
+                        .navigation(getContext());
                 break;
             case R.id.tv_un_finish:
+                ARouterManager.getInstance()
+                        .build("/order/PullOrderManagerActivity")
+                        .withInt("position",0)
+                        .navigation(getContext());
                 break;
             case R.id.tv_finish:
+                ARouterManager.getInstance()
+                        .build("/order/PullOrderManagerActivity")
+                        .withInt("position",1)
+                        .navigation(getContext());
                 break;
             case R.id.tv_cancel:
+                ARouterManager.getInstance()
+                        .build("/order/PullOrderManagerActivity")
+                        .withInt("position",2)
+                        .navigation(getContext());
                 break;
             case R.id.tv_un_pay:
                 ARouterManager.getInstance()
