@@ -18,6 +18,7 @@ import com.tianshang.fastman.mine.MineFmPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.View> {
@@ -53,6 +54,8 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
     @BindView(R.id.tv_cancel_push)
     TextView tvCancelPush;
 
+    private Unbinder unbinder;
+
     @Override
     protected int getLayoutResID() {
         return R.layout.fragment_mine;
@@ -60,7 +63,7 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
     }
 
     @OnClick({R.id.iv_profile, R.id.iv_setting, R.id.tv_more_pull,R.id.tv_more_push,
@@ -138,5 +141,11 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
     @Override
     public MineFmPresenter getPresenter() {
         return new MineFmPresenter();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

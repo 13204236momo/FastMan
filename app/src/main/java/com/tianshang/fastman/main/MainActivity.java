@@ -24,10 +24,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
 @ARouter(path = "/app/MainActivity")
 public class MainActivity extends BaseActivity {
 
@@ -41,14 +43,14 @@ public class MainActivity extends BaseActivity {
     TextView tvTab3;
 
     private List<Fragment> mFragmentList = new ArrayList<>();
-
     private int currentTab;
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
         initView();
         initData();
@@ -68,20 +70,20 @@ public class MainActivity extends BaseActivity {
 //        tvTab2.setOnClickListener(v -> http());
     }
 
-    private void initData(){
-        currentTab = getIntent().getIntExtra("tab",1);
-        if (currentTab == 1){
+    private void initData() {
+        currentTab = getIntent().getIntExtra("tab", 1);
+        if (currentTab == 1) {
             selectTab1();
-        }else if (currentTab == 3){
+        } else if (currentTab == 3) {
             selectTab3();
         }
     }
 
-    @OnClick({R.id.tab1,R.id.tab2,R.id.tab3})
-    void onClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3})
+    void onClick(View view) {
+        switch (view.getId()) {
             case R.id.tab1:
-               selectTab1();
+                selectTab1();
                 break;
             case R.id.tab2:
                 tvTab1.setTextColor(getResources().getColor(R.color.black));
@@ -93,13 +95,13 @@ public class MainActivity extends BaseActivity {
                 addRecord();
                 break;
             case R.id.tab3:
-               selectTab3();
+                selectTab3();
                 break;
         }
     }
 
 
-    private void selectTab1(){
+    private void selectTab1() {
         tvTab1.setTextColor(getResources().getColor(R.color.brown));
         tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.brown));
         tvTab2.setTextColor(getResources().getColor(R.color.black));
@@ -109,7 +111,7 @@ public class MainActivity extends BaseActivity {
         vpMain.setCurrentItem(0);
     }
 
-    private void selectTab3(){
+    private void selectTab3() {
         tvTab1.setTextColor(getResources().getColor(R.color.black));
         tvTab1.getCompoundDrawables()[1].setTint(getResources().getColor(R.color.black));
         tvTab2.setTextColor(getResources().getColor(R.color.black));
@@ -120,18 +122,15 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-
-
     private void addRecord() {
         Dialog dialog = new AddRecordDialog(this);
         dialog.show();
-        Log.d("zhou",System.currentTimeMillis()+"");
+        Log.d("zhou", System.currentTimeMillis() + "");
     }
 
 
     private void http() {
-       RetrofitHelper.getInstance()
+        RetrofitHelper.getInstance()
                 .create(RetrofitRequest.class)
                 .getCall()
                 .subscribeOn(Schedulers.io())
@@ -144,13 +143,13 @@ public class MainActivity extends BaseActivity {
 
                     @Override
                     public void onNext(CommonListResult<School> result) {
-                        Log.v("zyl","result:"+ result.getMsg());
+                        Log.v("zyl", "result:" + result.getMsg());
                     }
 
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.v("zyl", "请求失败:"+e.getMessage());
+                        Log.v("zyl", "请求失败:" + e.getMessage());
                     }
 
                     @Override
@@ -161,4 +160,9 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.functions.Consumer;
 
 
@@ -36,7 +37,7 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
     private TextView tvAddress;
 
     TaskAdapter taskAdapter;
-
+    private Unbinder unbinder;
     @Override
     protected int getLayoutResID() {
         return R.layout.fragment_task;
@@ -44,7 +45,7 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
 
         getPerMission();
@@ -116,5 +117,6 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
     public void onDestroy() {
         super.onDestroy();
         p.getContract().destroyLocation();
+        unbinder.unbind();
     }
 }
