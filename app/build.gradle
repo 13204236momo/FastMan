@@ -9,15 +9,15 @@ android {
     signingConfigs {
         //默认的debug签名信息，通过数据线安装就是用的这个
         debug {
-            //storeFile file('/Users/zhoumohan/.android/debug.keystore')
-            storeFile file('C:\\Users\\zhoumohan\\.android\\debug.keystore')
+            storeFile file('/Users/zhoumohan/.android/debug.keystore')
+            //storeFile file('C:\\Users\\zhoumohan\\.android\\debug.keystore')
             storePassword 'android'
             keyAlias = 'androiddebugkey'
             keyPassword 'android'
         }
         release {
-            storeFile file('D:\\androidstudio\\demo\\FastMan\\release.ketstore')
-            //storeFile file('/Users/zhoumohan/AndroidStudioProjects/FastMan/release.ketstore')
+            //storeFile file('D:\\androidstudio\\demo\\FastMan\\release.ketstore')
+            storeFile file('/Users/zhoumohan/AndroidStudioProjects/FastMan/release.ketstore')
             storePassword 'tianshangfastman'
             keyAlias = 'tianshangfastman'
             keyPassword 'tianshangfastman'
@@ -139,9 +139,9 @@ android {
             def file = output.outputFile
             if (file != null && file.name.endsWith('.apk')) {
                 if(variant.buildType.name == "debug"){
-                    outputFileName = "androidpro-v${variant.versionName}-debug.apk"
+                    outputFileName = "fastman-v${variant.versionName}-debug.apk"
                 }else if (variant.buildType.name == "release"){
-                    outputFileName = "androidpro-v${variant.versionName}-release.apk"
+                    outputFileName = "fastman-v${variant.versionName}-release.apk"
                 }
             }
         }

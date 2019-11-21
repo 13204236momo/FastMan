@@ -12,6 +12,7 @@ public class EditPhoneNumActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contentView(R.layout.activity_edit_phone);
+        setTitle("修改手机号");
     }
 
     

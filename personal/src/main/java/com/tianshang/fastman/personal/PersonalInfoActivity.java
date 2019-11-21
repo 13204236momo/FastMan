@@ -57,7 +57,7 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
     @OnClick({R2.id.iv_profile, R2.id.tv_sex, R2.id.tv_birthday, R2.id.tv_address})
     void onClick(View view) {
         int id = view.getId();
-       if (id == R.id.iv_profile) {
+        if (id == R.id.iv_profile) {
             getProfile();
         } else if (id == R.id.iv_profile) {
 
@@ -73,9 +73,10 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
             });
             dialog.show();
         } else if (id == R.id.tv_address) {
-            Type listType = new TypeToken<ArrayList<AddressEntity>>(){}.getType();
+            Type listType = new TypeToken<ArrayList<AddressEntity>>() {
+            }.getType();
             List<AddressEntity> o = new Gson().fromJson(Contracts.address, listType);
-            CityRollerDialog dialog = new CityRollerDialog(this,o);
+            CityRollerDialog dialog = new CityRollerDialog(this, o);
             dialog.setOnSelectedListener(new CityRollerDialog.OnSelectedListener() {
                 @Override
                 public void onSelected(String content) {
@@ -87,7 +88,7 @@ public class PersonalInfoActivity extends BaseCaptureActivity {
     }
 
 
-    @PermissionCheck({Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    @PermissionCheck({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     private void getProfile() {
 
         PictureDialog dialog = new PictureDialog(this);

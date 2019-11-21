@@ -13,5 +13,6 @@ public class EditLoginPasswordActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contentView(R.layout.activity_edit_login_password);
+        setTitle("修改登录密码");
     }
 }
