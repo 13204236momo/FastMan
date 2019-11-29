@@ -1,7 +1,9 @@
 package com.tianshang.fastman.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -11,9 +13,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.tianshang.annotation.behaviour.LoginCheck;
 import com.tianshang.arouter_api.ARouterManager;
 import com.tianshang.common.base.mvp.BaseViewFm;
+import com.tianshang.common.utils.MemoryLeakUtil;
 import com.tianshang.fastman.R;
 import com.tianshang.fastman.mine.MineFmContract;
 import com.tianshang.fastman.mine.MineFmPresenter;
+
+import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,6 +69,7 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
+
     }
 
     @OnClick({R.id.iv_profile, R.id.iv_setting, R.id.tv_more_pull,R.id.tv_more_push,
@@ -160,7 +166,9 @@ public class MineFragment extends BaseViewFm<MineFmPresenter, MineFmContract.Vie
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         unbinder.unbind();
+        MemoryLeakUtil.fixInputMethodMemoryLeak(getContext());
+        super.onDestroy();
+
     }
 }

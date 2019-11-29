@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -162,7 +163,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         unbinder.unbind();
+        super.onDestroy();
+
     }
 }

@@ -13,6 +13,7 @@ import com.tianshang.annotation.behaviour.PermissionCheck;
 import com.tianshang.common.base.mvp.BaseViewFm;
 import com.tianshang.common.entity.app.TaskListEntity;
 import com.tianshang.common.utils.Helper;
+import com.tianshang.common.utils.MemoryLeakUtil;
 import com.tianshang.common.utils.PermissionUtility;
 import com.tianshang.common.widget.CommonDialog;
 import com.tianshang.common.widget.SwipeItemLayout;
@@ -118,5 +119,6 @@ public class TaskFragment extends BaseViewFm<TaskFmPresenter, TaskFmContract.Vie
         super.onDestroy();
         p.getContract().destroyLocation();
         unbinder.unbind();
+        MemoryLeakUtil.fixInputMethodMemoryLeak(getContext());
     }
 }
